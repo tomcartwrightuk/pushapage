@@ -1,0 +1,21 @@
+<%= form_for(@site_reference) do |f| %>
+  <% if @site_reference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_reference.errors.count, "error") %> prohibited this site_reference from being saved:</h2>
+
+      <ul>
+      <% @site_reference.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :reference %><br />
+    <%= f.text_field :reference %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

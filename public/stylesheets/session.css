@@ -1,0 +1,77 @@
+body {
+background-color:  #ececec;
+color: #3D3D3D;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+margin: 0px;
+}
+
+#container {
+padding: 15px;
+}
+
+input {
+width: 170px;
+}
+
+h4 {margin: 0px; }
+
+h3 {
+margin: 5px 0px;
+}
+
+#left_column {
+width: 100px;
+       /*float: left;*/
+}
+
+#right_column {
+width: 175px;
+float: right;
+}
+
+.small_text {
+font-size: 12px;
+}
+
+#message {
+width: 120px;
+display: block;
+margin: 0px auto;
+}
+
+#spinner {
+display: block;
+width: 25px;
+margin: 0px auto;
+}
+
+#content_wrapper {
+width: 145px;
+margin: 40px auto 0px auto;
+text-align: center;
+}
+
+#small_text {
+font-size: 12px;
+}
+
+#bookmark_footer {
+margin: 35px auto 0px auto;
+width: 210px;
+text-align: center;
+}
+
+p {margin: 0px; }
+
+.inline {display : inline; }
+
+.auto_margin { 
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+}
+
+#instapaper {
+  /*background-color: blue;*/
+/*width: 105px;*/
+}

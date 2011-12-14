@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SavedSite</title>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <%= stylesheet_link_tag '1140', :media => 'screen' %>
+    <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
+    <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'ie', :media => 'screen' %>
+    <![endif]-->
+    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+    <%= stylesheet_link_tag 'styles', :media => 'screen' %>
+  <%= javascript_include_tag 'jquery.min.js' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <div class="container" %>
+    <div class="row">
+    <%= render 'layouts/header' %>
+    </div>
+    <div class="row" id="main_row">
+      <div class="twocol">
+        <p>Column 1</p>
+      </div>
+      <div class="eightcol">
+          <p><%= yield %></p>
+      </div>
+      <div class="twocol last">
+        <p>Column 3</p>
+      </div>
+    </div>
+  </div>
+      </div>
+</body>
+</html>
+
+

@@ -1,0 +1,24 @@
+<h1>Listing site_references</h1>
+
+<table>
+  <tr>
+    <th>Reference</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @site_references.each do |site_reference| %>
+  <tr>
+    <td><%= site_reference.reference %></td>
+    <td><%= link_to 'Show', site_reference %></td>
+    <td><%= link_to 'Edit', edit_site_reference_path(site_reference) %></td>
+    <td><%= link_to 'Destroy', site_reference, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Site reference', new_site_reference_path %>
+<a href='/site_references/latest'>Latest URL</a>

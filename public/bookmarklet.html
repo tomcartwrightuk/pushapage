@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+	
+<script>
+$(function() {
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+ref = getURLParameter("l");
+// alert(ref);
+    $.ajax({
+      type: 'POST',
+      url:'http://localhost:3000/site_references',
+      data: {"reference": ref},
+      dataType: 'json'
+
+    });
+});
+</script>
+</head>
+<body style="background: #FFF">
+<h5>
+Welcome - script running!!
+</h5>
+</body>
+</html>
+

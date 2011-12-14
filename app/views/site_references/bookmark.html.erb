@@ -1,0 +1,82 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+        
+<script>
+$(function() {
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+ref = getURLParameter("l");
+
+// alert(ref);
+   // $.ajax({
+     // type: 'POST',
+     // url:'http://localhost:3000/site_references?auth_token=<%= @user.authentication_token %>',
+     // data: {"reference": ref},
+     // dataType: 'json',
+     // context: document.body,
+     // success: function(){
+     //   var newHTML;
+     //   newHTML = "<h5>Page sent!</h5><br><p>On any of your devices, just click your 'Retrieve page' bookmark</p>";
+     //   $('#message').html(newHTML);
+    //  },
+    //  error: function() {
+    //    var newHTML;
+    //    newHTML = "<h2>Don't hate me.</h2><br><p>There was an error of sorts. Please try again soon.</p>";
+    //    $('#message').html(newHTML);
+   //   },
+ //   }); 
+    
+    $("#instapaper").click(function() {
+      $.ajax({
+        type: 'GET',
+        url:'http://www.instapaper.com/api/add?url='+ref,
+        dataType: 'jsonp',
+        context: document.body,
+        success: function(){
+          var newHTML;
+          newHTML = "<h2>Done</h2>";
+          $('#instapaper').html(newHTML);
+        },
+        error: function() {
+          var newHTML;
+          newHTML = "<h2>Don't hate me or instapaper.</h2><br><p>There was an error of sorts. Please try again soon.</p>";
+          $('#instapaper').html(newHTML);
+        },
+      })
+    });
+var opts = {
+  lines: 10, // The number of lines to draw
+  length: 5, // The length of each line
+  width: 4, // The line thickness
+  radius: 6, // The radius of the inner circle
+  color: '#000', // #rgb or #rrggbb
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow percentage
+  shadow: false // Whether to render a shadow
+};
+var target = document.getElementById('spinner');
+var spinner = new Spinner(opts).spin(target);
+
+
+});
+</script>
+</head>
+<body>
+  <div id="container">
+    <h4>Pushapage</h4>
+      <div id="content_wrapper">
+        <div id="spinner"></div><br>
+        <span id="message">Sending page..</span>
+      </div>
+    <div id="bookmark_footer">
+      <a href="#" class="small_text inline" id="instapaper">Send to Instapaper</a>
+      <a href="#" class="small_text inline" id="pinboard">Send to Pinboard</a>
+    </div>
+  </div>
+</body>
+</html>
+
