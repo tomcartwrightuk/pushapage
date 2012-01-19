@@ -1,0 +1,17 @@
+<div id="pullapagehistory">
+  <a href="/" target="_blank"><h4>Pushapage</h4></a>
+  <table class="pullapagehistory">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @site_references.each do |site_reference| %>
+    <tr>
+      <td>
+        <%= link_to truncate(site_reference.title, :length => 35), site_reference.reference, :target => '_blank', :class => 'small_text' %></td>
+      <td><%= time_ago_in_words(site_reference.created_at) %> ago</td>
+    </tr>
+  <% end %>
+  </table>
+</div>

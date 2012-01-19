@@ -38,5 +38,6 @@ module SavedSite
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each {|l| require l }
   end
 end

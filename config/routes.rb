@@ -1,7 +1,9 @@
 SavedSite::Application.routes.draw do
+
   resources :options
 
   get "pages/home"
+  match "/setup" => "pages#setup"
 
   devise_for :users,  :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
   devise_scope :user do
@@ -9,12 +11,11 @@ SavedSite::Application.routes.draw do
     match "/sign_in", :to => "users/sessions#new"
   end
 
-  match "/sign_in", :to => "users/sessions#new"
+  resources :site_references do
+    get 'add_bookmark', :on => :collection
+    get 'pullapage_screen', :on => :collection
+  end
 
-  #devise_for :site_references do
-    #get "sign_in", :to => "users/sessions#new_from_anywhere"
-  #end
-  resources :site_references
   match "/latest" => "site_references#latest", :as => "latest"
   root :to => 'pages#home'
   match "/add_site" => "site_references#bookmark"

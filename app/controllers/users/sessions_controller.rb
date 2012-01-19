@@ -2,14 +2,20 @@ class Users::SessionsController < Devise::SessionsController
 
   layout "application"
 
+  def signin_from_website
+    redirect_to :new
+  end
+
   def new
+    if user_signed_in?
+      redirect_to root_path
+    end
     resource = build_resource
     clean_up_passwords(resource)
-    #@location = session[:user_return_to]
-    #if after_sign_in_path_for(resource) == '/'
-    if session[:user_return_to] == nil
+    @location = session[:user_return_to] || 'empty'
+    if @location == nil
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
-    elsif (session[:user_return_to])[0..8] == '/add_site'
+    elsif @location[0..8] == '/add_site' || @location == '/site_re'
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope_bookmark :new }
     else
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
@@ -28,7 +34,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def change_user
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    redirect_to '/sign_in'
+    redirect_to root_path 
   end
       
 end

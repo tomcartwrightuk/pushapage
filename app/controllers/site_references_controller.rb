@@ -44,6 +44,10 @@ class SiteReferencesController < ApplicationController
     render :layout => 'bookmark_layout'	
   end
 
+  def add_bookmark
+    @user = current_user
+  end
+
   # GET /site_references/1/edit
   def edit
     @site_reference = SiteReference.find(params[:id])
@@ -54,6 +58,11 @@ class SiteReferencesController < ApplicationController
   def create
     @site_reference = current_user.site_references.build(params[:site_reference])
     @site_reference.reference = params[:reference]
+    if params[:title]
+      @site_reference.title = params[:title]
+    else
+      @site_reference.title = params[:reference]
+    end
     respond_to do |format|
       if @site_reference.save
         format.html { redirect_to(@site_reference, :notice => 'Site reference was successfully created.') }
@@ -88,9 +97,14 @@ class SiteReferencesController < ApplicationController
     @site_reference.destroy
 
     respond_to do |format|
-      format.html { redirect_to(site_references_url) }
+      format.html { redirect_to root_path }
       format.xml  { head :ok }
     end
+  end
+
+  def pullapage_screen
+    @site_references = current_user.site_references.find(:all, :order => "id asc", :limit => 10).reverse
+    render :layout => 'bookmark_layout'
   end
 
 end

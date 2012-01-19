@@ -1,0 +1,10 @@
+Code from Mini bookmarketlet - doesn't insert into 320 and up site.
+javascript:(function(e,a,g,h,f,c,b,d){if(!(f=e.jQuery)||g>f.fn.jquery||h(f)){c=a.createElement("script");c.type="text/javascript";c.src="http://localhost:3000/javascripts/jquery-1.6.2.js";c.onload=c.onreadystatechange=function(){if(!b&&(!(d=this.readyState)||d=="loaded"||d=="complete")){h((f=e.jQuery).noConflict(1),b=1);f(c).remove()}};a.documentElement.childNodes[0].appendChild(c)}})(window,document,"1.7.1",function($,L){
+
+var%20locate=$(location).attr('href');$(document.body).append('<IFRAME%20id="myId"%20/>');$("iframe#myId").attr("src","http://localhost:3000/add_site?l="+locate);$("iframe#myId").attr("style","position:fixed;top:20px;left:20px;height:185px;width:320px;border:1px%20solid;z-index:16777271;");
+
+});
+
+
+Empty Ben Alman jquery bookmarklet:
+javascript:(function(e,a,g,h,f,c,b,d){if(!(f=e.jQuery)||g>f.fn.jquery||h(f)){c=a.createElement("script");c.type="text/javascript";c.src="http://ajax.googleapis.com/ajax/libs/jquery/"+g+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!(d=this.readyState)||d=="loaded"||d=="complete")){h((f=e.jQuery).noConflict(1),b=1);f(c).remove()}};a.documentElement.childNodes[0].appendChild(c)}})(window,document,"1.6.2",function($,L){});

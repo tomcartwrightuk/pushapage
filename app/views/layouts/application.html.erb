@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>SavedSite</title>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
-    <%= stylesheet_link_tag '1140', :media => 'screen' %>
+    <%= stylesheet_link_tag 'less', :media => 'screen' %>
     <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
     <!--[if lt IE 8]>
     <%= stylesheet_link_tag 'ie', :media => 'screen' %>
@@ -14,27 +15,21 @@
     <%= stylesheet_link_tag 'custom', :media => 'screen' %>
     <%= stylesheet_link_tag 'styles', :media => 'screen' %>
   <%= javascript_include_tag 'jquery.min.js' %>
+  <%= javascript_include_tag 'application', 'rails' %>
+<link rel="icon" href="/images/favicon.png"/> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Adding "maximum-scale=1" fixes the Mobile Safari auto-zoom bug: http://filamentgroup.com/examples/iosScaleBug/ -->
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body lang="en">
 
-  <div class="container" %>
-    <div class="row">
+  <div id="content">
     <%= render 'layouts/header' %>
-    </div>
-    <div class="row" id="main_row">
-      <div class="twocol">
-        <p>Column 1</p>
-      </div>
-      <div class="eightcol">
-          <p><%= yield %></p>
-      </div>
-      <div class="twocol last">
-        <p>Column 3</p>
-      </div>
-    </div>
+          <div class="container round">
+          <%= yield %>
+          </div>
   </div>
-      </div>
 </body>
 </html>
 

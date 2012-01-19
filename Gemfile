@@ -10,7 +10,7 @@ gem 'devise'
 gem 'rspec-rails', '2.6.1'
 gem 'factory_girl'
 gem 'factory_girl_rails'
-
+gem 'capistrano'
 
 # Use unicorn as the web server
 # gem 'unicorn'

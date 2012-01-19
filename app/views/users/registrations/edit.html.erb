@@ -1,22 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="settings">
+<h3>Settings</h3>
 
-# registrations/edit.html.erb
-
-
-
-<p><%= link_to "Generate Token", token_authentications_path(:user_id => resource.id), :method => :post, :confirm => "Are you sure?"  %>
-<%= link_to "Delete Token", token_authentication_path(resource.id), :method => :delete, :confirm => "Are you sure?"  %></p>
-
-<% if resource.authentication_token %>
-  <p>You can use this url to login<br />
-  <%= link_to "http://localhost:3000#{root_path(:auth_token => resource.authentication_token)}", root_path(:auth_token => resource.authentication_token)  %></p>
-<% end %>
-
-Here is a form:
+<p>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-<p><%= f.label :token_authentication_key %><br />
-<%= resource.authentication_token.blank? ? "Token Empty" : resource.authentication_token %></p>
+<div id="settings_left_column">
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -28,12 +16,29 @@ Here is a form:
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
+</div>
+<div id="settings_right_column">
 
-  <div><%= f.submit "Update" %></div>
+  <div><%= f.label :instapaper_username, "Instapaper username" %><br /> 
+  <%= f.text_field :instapaper_user %></div>
+
+  <div><%= f.label :instapaper_pass, "Instapaper password" %><br /> 
+  <%= f.password_field :instapaper_pass %></div><br />
+
+  <div><%= f.label :pinboard_user, "Pinboard username" %><br /> 
+  <%= f.text_field :pinboard_user %></div>
+
+  <div><%= f.label :pinboard_pass, "Pinboard password" %><br /> 
+  <%= f.password_field :pinboard_pass %></div>
+</div>
+
+  <div><%= f.submit "Save settings" %></div>
 <% end %>
+</p>
 
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
 
 <%= link_to "Back", :back %>
+</div>

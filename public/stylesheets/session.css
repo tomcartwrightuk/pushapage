@@ -2,15 +2,27 @@ body {
 background-color:  #ececec;
 color: #3D3D3D;
 font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-margin: 0px;
+/*margin: auto 0px auto 0px;*/
+padding: 10px;
 }
 
 #container {
-padding: 15px;
 }
 
 input {
 width: 170px;
+}
+
+a {text-decoration: none;
+  color: #103842;
+}
+a:visited { color: #413225; }
+
+a h4 {
+text-decoration: none;
+border-bottom: 1px #3D3D3D dotted;
+color: #3D3D3D;
+display: inline
 }
 
 h4 {margin: 0px; }
@@ -39,16 +51,31 @@ display: block;
 margin: 0px auto;
 }
 
-#spinner {
+#sent_status {
+position: relative;
+bottom: 0px;
+}
+
+.spinner_container {
 display: block;
 width: 25px;
-margin: 0px auto;
+margin: 0px auto 10px auto;
+height: 25px;
+}
+
+span {
+bottom-margin: 8px;
 }
 
 #content_wrapper {
-width: 145px;
-margin: 40px auto 0px auto;
+width: 245px;
+margin: 10px auto 0px auto;
 text-align: center;
+vertical-align: bottom;
+}
+
+#info_paragraph {
+margin-top: 10px;
 }
 
 #small_text {
@@ -56,12 +83,19 @@ font-size: 12px;
 }
 
 #bookmark_footer {
-margin: 35px auto 0px auto;
-width: 210px;
+position: absolute;
+bottom: 10px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 0px;
+width: 295px;
 text-align: center;
 }
 
-p {margin: 0px; }
+p {
+margin: 0px;
+font-size: 12px;
+ }
 
 .inline {display : inline; }
 
@@ -71,7 +105,20 @@ margin-right: auto;
 text-align: center;
 }
 
-#instapaper {
-  /*background-color: blue;*/
-/*width: 105px;*/
+.send_to_button {
+cursor: pointer; 
+cursor: hand;
+background-color: #b6ced6;
+padding: 3px;
+width: 120px;
+display: inline-block;
 }
+
+h5 {
+font-size: 15px;
+}
+
+.pullapagehistory {
+  font-size: 13px;
+}
+

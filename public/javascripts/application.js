@@ -3,6 +3,13 @@
 // 
 
 
+$(function() {
+$('#sign_in_button').click(function() {
+	$('#sign_in').fadeIn(300);
+});
+
+
+});
 $('#user_password_clear').show();
 	$('#user_password').hide();
 	 

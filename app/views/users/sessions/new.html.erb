@@ -1,5 +1,4 @@
 <div id="right_column">
-<%= @location %>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= f.label :email %><br>
     <%= f.email_field :email %></div></ br>
@@ -7,18 +6,25 @@
     <div><%= f.label :password %><br>
     <%= f.password_field :password %></div></ br>
 
-    <% if devise_mapping.rememberable? -%>
+    <% if devise_mapping.rememberable? %>
       <div style="display: none" ><%= f.check_box :remember_me, :checked => true %> <%= f.label :remember_me %></div>
     <% end -%>
 
     <div><%= f.submit "Sign in" %></div>
   <% end %>
   <div class="small_text">
+
   <%= render :partial => "devise/shared/links" %>
   </div>
 </div>
 
+<% if @location[0..8] != 'empty' %>
 <div id="left_column">
   <h3>Pushapage</h3>
-  <p><%= @location %> Sign in and your page will be whisked off.</p>
+<% end %>
+<% if @location[0..8] == '/add_site' %>
+  <p>Sign in and your page will be whisked off.</p>
+<% else %>
+  <p>Sign in to see you recently saved pages.</p>
+<% end %>
 </div>

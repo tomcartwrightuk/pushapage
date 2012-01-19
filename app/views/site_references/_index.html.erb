@@ -1,0 +1,24 @@
+<div id="link_index">
+  <table id="site_reference_list">
+  <tr>
+  <th><h4 style="float: left;">RECENTLY ADDED PAGES</h4></th>
+  </tr>
+
+  <% @site_references.each do |site_reference| %>
+    <tr>
+      <td>
+      <%= link_to truncate(site_reference.title, :length => 80), site_reference.reference %><br />
+      <div id="site_reference" class="small_text">
+        <% if site_reference.reference[0..6] == 'http://' %>
+          <%= link_to site_reference.reference.get_host, site_reference.reference , :class => 'small_text' %>
+        <% else %>
+          <%= link_to truncate(site_reference.reference, :length => 40), site_reference.reference , :class => 'small_text' %>
+        <% end %>
+      </div>
+      <div class="small_text float_right"><%= link_to 'Delete', site_reference, { :controller => :site_references, :action => :destroy, :method => :delete, :confirm => 'Are you sure?' } %></div>
+      <div id="added_time" class="small_text float_right">Added <%= time_ago_in_words(site_reference.created_at) %> ago</div></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+

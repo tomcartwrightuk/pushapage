@@ -1,9 +1,6 @@
-<h1>Listing site_references</h1>
-
+<h3>Recently added pages</h3>
 <table>
   <tr>
-    <th>Reference</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -11,9 +8,7 @@
 <% @site_references.each do |site_reference| %>
   <tr>
     <td><%= site_reference.reference %></td>
-    <td><%= link_to 'Show', site_reference %></td>
-    <td><%= link_to 'Edit', edit_site_reference_path(site_reference) %></td>
-    <td><%= link_to 'Destroy', site_reference, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Delete page', site_reference, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

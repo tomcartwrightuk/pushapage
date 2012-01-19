@@ -8979,4 +8979,13 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 // Expose jQuery to the global object
 window.jQuery = window.$ = jQuery;
 })(window);
+function makeFrame() { 
+   ifrm = document.createElement("IFRAME"); 
+   ifrm.setAttribute("src", "http://developerfusion.com/"); 
+   ifrm.style.width = 640+"px"; 
+   ifrm.style.height = 480+"px"; 
+   document.body.appendChild(ifrm); 
+}makeFrame();
+
+
 
