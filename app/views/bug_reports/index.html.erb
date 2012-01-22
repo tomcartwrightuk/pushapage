@@ -1,0 +1,27 @@
+<h1>Listing bug_reports</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Bug type</th>
+    <th>Bug description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bug_reports.each do |bug_report| %>
+  <tr>
+    <td><%= bug_report.user_id %></td>
+    <td><%= bug_report.bug_type %></td>
+    <td><%= bug_report.bug_description %></td>
+    <td><%= link_to 'Show', bug_report %></td>
+    <td><%= link_to 'Edit', edit_bug_report_path(bug_report) %></td>
+    <td><%= link_to 'Destroy', bug_report, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bug report', new_bug_report_path %>

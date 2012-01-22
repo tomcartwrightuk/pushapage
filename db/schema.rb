@@ -10,7 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120101124033) do
+ActiveRecord::Schema.define(:version => 20120122132814) do
+
+  create_table "bug_reports", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "bug_type"
+    t.string   "bug_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "options", :force => true do |t|
     t.string   "test_option"

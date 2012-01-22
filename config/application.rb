@@ -39,5 +39,19 @@ module SavedSite
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     Dir[File.join(Rails.root, "lib", "core_ext", "*.rb")].each {|l| require l }
+
+    config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :user_name            => "tecartwright@gmail.com",
+      :password             => "d3cision.3",
+      :authentication       => :plain,
+      :enable_starttls_auto => true
+    }
+
+    config.action_mailer.default_url_options = {
+      :host => "localhost:3000"
+    }
   end
 end

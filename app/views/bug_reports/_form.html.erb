@@ -1,0 +1,29 @@
+<%= form_for(@bug_report) do |f| %>
+  <% if @bug_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bug_report.errors.count, "error") %> prohibited this bug_report from being saved:</h2>
+
+      <ul>
+      <% @bug_report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bug_type %><br />
+    <%= f.text_field :bug_type %>
+  </div>
+  <div class="field">
+    <%= f.label :bug_description %><br />
+    <%= f.text_field :bug_description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

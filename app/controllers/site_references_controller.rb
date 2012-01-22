@@ -44,10 +44,7 @@ class SiteReferencesController < ApplicationController
     render :layout => 'bookmark_layout'	
   end
 
-  def add_bookmark
-    @user = current_user
-  end
-
+  
   # GET /site_references/1/edit
   def edit
     @site_reference = SiteReference.find(params[:id])

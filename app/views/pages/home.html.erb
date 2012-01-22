@@ -6,13 +6,16 @@
 <div id="introduction">
   <p>Pushapage is a helpful little service that let's you push a web page to any of your internet devices including laptops, tablets and phones. Just add our bookmarks to your bookmarks bar to start sending and receiving pages.
   </p>
-  <br>
-
-    <ul class="a indented">
+  <div id="feature_list">
+    <ul class="a">
       <li>Click a bookmark to send a page</li>
       <li>Receive the page with another bookmark click</li>
       <li>Send the page to your instapaper account</li>
       <li>Send to your pinboard account</li>
     </ul>
+  </div>
+</div>
+<div class="centred_content">
+  <%= link_to "Sign up", '/users/sign_up', { :class => "big_button inline" } %>
 </div>
 <% end %>

@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     @resource = current_user
   end
 
+  def mobile_setup
+    @user = current_user
+  end
+
   def resource_name
     :user
   end

@@ -1,4 +1,4 @@
-<div id="right_column">
+<div id="right_column" class="signin_form">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <div><%= f.label :email %><br>
     <%= f.email_field :email %></div></ br>
@@ -25,6 +25,5 @@
 <% if @location[0..8] == '/add_site' %>
   <p>Sign in and your page will be whisked off.</p>
 <% else %>
-  <p>Sign in to see you recently saved pages.</p>
 <% end %>
 </div>
