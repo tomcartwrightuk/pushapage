@@ -7,10 +7,14 @@
 
 	  <% if signed_in? %>
             <li><%= link_to "Home", root_path %></li>
-            <li><div style="margin: 10px 5px;">Settings</div>
-                <ul>
-                <li><%= link_to "Account", edit_user_registration_path %>
-                <li><%= link_to "Setup", setup_path %></li>
+            <li><div id="settings_button" style="margin: 10px 5px;">Settings</div>
+                <ul id="submenu_item">
+                <li id="submenu_item"><%= link_to "Account", edit_user_registration_path %>
+                <% if mobile_device? %>
+                  <li id="submenu_item"><%= link_to "Setup", mobile_setup_path %></li>
+                <% else %>
+                  <li id="submenu_item"><%= link_to "Setup", setup_path %></li>
+                <% end %>
                 </ul>
             </li>
 	  <% end %>
@@ -20,3 +24,5 @@
           <% end %>
       </ul>
 </header>
+
+

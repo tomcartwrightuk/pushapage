@@ -1,9 +1,14 @@
 SavedSite::Application.routes.draw do
 
+  resources :supports
+
+  resources :bug_reports
+
   resources :options
 
   get "pages/home"
   match "/setup" => "pages#setup"
+  match "/mobile_setup" => "pages#mobile_setup"
 
   devise_for :users,  :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
   devise_scope :user do
@@ -12,7 +17,6 @@ SavedSite::Application.routes.draw do
   end
 
   resources :site_references do
-    get 'add_bookmark', :on => :collection
     get 'pullapage_screen', :on => :collection
   end
 
@@ -21,6 +25,8 @@ SavedSite::Application.routes.draw do
   match "/add_site" => "site_references#bookmark"
   resources :token_authentications, :only => [:create, :destroy]
 
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

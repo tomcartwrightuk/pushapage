@@ -42,7 +42,7 @@ section {
 /* Main layout  */
 
 .container {
-margin: 50px auto;
+margin: 50px auto 0px auto;
 background-color: #fff;
 padding: 30px;
 }
@@ -92,6 +92,7 @@ background-color: #0056F9;
   box-shadow: 2px 2px 4px #777;
 }
 .centred_content {
+  text-align: center;
 }
 
 .float_left {
@@ -212,7 +213,8 @@ input:-webkit-autofill {
   background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
   list-style:none;
   position:absolute;
-  left:-9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+  left:0; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+  display: none;
 }
 #nav ul li{
   padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
@@ -221,8 +223,8 @@ input:-webkit-autofill {
 #nav ul a{
   white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
 }
-#nav li:hover ul{ /* Display the dropdown on hover */
-  left:0; /* Bring back on-screen when needed */
+.display_submenu { /* Display the dropdown on hover */
+  left:0 !important; /* Bring back on-screen when needed */
 }
 #nav li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
 }
@@ -328,8 +330,8 @@ width: 500px;
 }
 
 .centred {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 #site_reference_list {
@@ -350,9 +352,17 @@ margin:auto;
 }
 
 #introduction {
-  width: 700px;
   margin-left: auto;
   margin-right: auto;
+  height: 200px;
+  
+}
+
+#introduction p, #feature_list {
+  width: 400px;
+  margin-left: 60px;
+  float: left;
+  height: 120px;
 }
 
 #home_page_left {
@@ -416,6 +426,12 @@ height: 30px;
 }
 /* Sign up page inc. forms */
 
+.signin_form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
+
 form .input_wrapper.blurred input, form .input_wrapper.filled input {
     color: #333333;
     cursor: text;
@@ -431,6 +447,22 @@ form .input_wrapper.blurred input, form .input_wrapper.filled input {
   margin-left: auto;
   margin-right: auto;
   display: none;
+}
+
+input[type="submit"], input[type="button"], .big_button {
+  border: 0;
+  background-color: #0059F6;
+  margin: 10px 0;
+  color: #F8FBFD;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 17px 34px 17px 34px;
+  min-width: 180px;
+  cursor: pointer;
+  -moz-border-radius: 14px;
+  -webkit-border-radius: 14px;
+  text-align: center;
+  border-image: initial;
 }
 
 #signupform { 
@@ -506,11 +538,11 @@ display: none;
 }
 
 #user_name, #user_email, #user_password, #user_password_clear, #user_password_confirmation, #user_password_confirmation_clear, #user_sign_up_code, #search_box, #user_pinboard_user, #user_pinboard_pass, #user_instapaper_user, #user_instapaper_pass {
-    font-size: 16px;
+    font-size: 22px;
     margin: 6px 0 6px 0px;
     padding: 8px 10px;
     top: 0;
-    width: 176px;
+    width: 276px;
 }
 
 form .input_wrapper {

@@ -1,14 +1,14 @@
 require 'bundler/capistrano'
 set :user, 'ubuntu'
 set :domain, 'ec2-50-16-164-29.compute-1.amazonaws.com'
-set :applicationdir, "appdir"
+set :applicationdir, "~/saved_site"
  
 set :scm, 'git'
-set :repository,  "git@github.com:tomcartwrightuk/pushapage.git"
-#set :git_enable_submodules, 1  if you have vendored rails
+set :repository,  "pushapage:pushapage.git"
 set :branch, 'master'
 set :git_shallow_clone, 1
 set :scm_verbose, true
+set :user_sudo, true
  
 # roles (servers)
 role :web, domain
@@ -21,7 +21,7 @@ set :deploy_via, :export
  
 # additional settings
 default_run_options[:pty] = true  # Forgo errors when deploying from windows
-ssh_options[:keys] = %w(/home/user/.ssh/tom_prox_serv.pem)            # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
+ssh_options[:keys] = %w(~/.ssh/tom_prox_serv.pem)            # If you are using ssh_keysset :chmod755, "app config db lib public vendor script script/* public/disp*"set :use_sudo, false
  
 # Passenger
 namespace :deploy do

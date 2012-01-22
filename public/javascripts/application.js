@@ -4,11 +4,21 @@
 
 
 $(function() {
-$('#sign_in_button').click(function() {
-	$('#sign_in').fadeIn(300);
-});
+	$('#sign_in_button').click(function() {
+		$('#sign_in').fadeIn(300);
+	});
+	$('#settings_button').click(function() {
+		$("#submenu_item").toggle();
+	});
 
+	$('body').click(function(event) {
+		if (!$(event.target).closest('#settings_button').length) {
+		$('#submenu_item').hide();
+		};
+	});
 
+	var window_height = $(window).height();
+	$('.container').css('min-height', 0.8*window_height);
 });
 $('#user_password_clear').show();
 	$('#user_password').hide();
