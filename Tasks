@@ -1,0 +1,6 @@
+
+- Write tests for mailer and for ajax controller actions
+- Sort out the layout at smaller screens.
+- Recreate the bookmarklet so that it runs completely from within JS.
+- If you are signed out, then you sign back in from the website, it should send you to the saved page bookmarklet but to the home page - and tell you it's saved the page.
+- 
