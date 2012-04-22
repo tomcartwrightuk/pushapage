@@ -1,5 +1,8 @@
 <div id="settings">
-    <div class="bookmarklet_row bottom_border">
+         <p>
+        <%= link_to "Click to setup your ipad/tablet <=", { :controller => '/pages', :action => 'mobile_setup' } %> 
+        </p>
+   <div class="bookmarklet_row bottom_border">
       <div id="settings_left_column" class="setup_column"> 
         <p>
         Push the page to your devices.<br />
@@ -26,9 +29,9 @@
     <div class="bookmarklet_row">
       <div id="settings_right_column" class="setup_column left_border">
         <p>
-        Display a list of your most recently added pages.
+        Display a popup list of your most recently added pages.
         </p>
-        <a href='javascript:(function(){function d(){(window.myBookmarklet=function(){var a=$(location).attr("href");$(document.body).append("<iframe id=\"myId\" />");$("iframe#myId").attr("src","http://localhost:3000/site_references/pullapage_screen");$("iframe#myId").attr("style","position:fixed;top:0px;right:0px;height:280px;width:300px;border:1px%20solid;z-index:16777271;")})()}var a="1.6.2";if(window.jQuery===undefined||window.jQuery.fn.jquery<a){var b=false;var c=document.createElement("script");c.src="http://ajax.googleapis.com/ajax/libs/jquery/"+a+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){b=true;d()}};document.getElementsByTagName("head")[0].appendChild(c)}else{d()}})()' class='bookmarklet'>PullapageHistory</a>
+        <a href='javascript:(function(){function d(){(window.myBookmarklet=function(){var a=$(location).attr("href");$(document.body).append("<iframe id=\"myId\" />");$("iframe#myId").attr("src","http://localhost:3000/site_references/pullapage_screen");$("iframe#myId").attr("style","position:fixed;top:0px;right:0px;height:280px;width:300px;border:1px%20solid;z-index:16777271;")})()}var a="1.6.2";if(window.jQuery===undefined||window.jQuery.fn.jquery<a){var b=false;var c=document.createElement("script");c.src="http://ajax.googleapis.com/ajax/libs/jquery/"+a+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){b=true;d()}};document.getElementsByTagName("head")[0].appendChild(c)}else{d()}})()' class='bookmarklet'>PushapageHistory</a>
         <div class="tiny_text inline">
         ← Drag this to your bookmark bar
         </div>
@@ -37,31 +40,9 @@
           <img src="/images/pullapage.jpg"> 
       </div>
        <br />
-        <p>
-        <%= link_to "Add the bookmark to your ipad", { :controller => '/pages', :action => 'mobile_setup' } %> 
-        </p>
         <br />
         <br />
   </div> 
     <br />
-    <div id="settings_right_column">
-    <%= form_for(@resource, :url => registration_path(@resource), :html => { :method => :put }) do |f| %>
-      <div><%= f.label :instapaper_username, "Instapaper username" %><br /> 
-      <%= f.text_field :instapaper_user %></div>
-
-      <div><%= f.label :instapaper_pass, "Instapaper password" %><br /> 
-      <%= f.password_field :instapaper_pass %></div><br />
-
-      <div><%= f.label :pinboard_user, "Pinboard username" %><br /> 
-      <%= f.text_field :pinboard_user %></div>
-
-      <div><%= f.label :pinboard_pass, "Pinboard password" %><br /> 
-      <%= f.password_field :pinboard_pass %></div>
-
-      <div><%= f.submit "Save settings" %></div>
-    <% end %>
-      
-
-
     </div>
  </div>

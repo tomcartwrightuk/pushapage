@@ -43,8 +43,8 @@ ref = getURLParameter("l");
         type: 'GET',
         dataType: 'jsonp',
         jsonp: 'jsonp',
-        url:'http://www.instapaper.com/api/add',
-        data: {"url": ref , "username": "<%= current_user.instapaper_pass %>", "password": "<%= current_user.instapaper_pass %>", },
+        url:'https://www.instapaper.com/api/add',
+        data: {"url": ref , "username": "<%= current_user.instapaper_user %>", "password": "<%= current_user.instapaper_pass %>", },
         success: function(data) {
           var newHTML;
           if (data['status'] == 201)
@@ -67,12 +67,34 @@ ref = getURLParameter("l");
       })
     });
 
+    $("#pinboard").click(function() {
+      $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        jsonp: 'jsonp',
+        url:'https://<%= current_user.pinboard_user %>:<%= current_user.pinboard_pass %>@api.pinboard.in/v1/method',
+        statusCode: {
+          200: function() {
+            send_pinboard_url();
+          }
+        }
+      })
+    });
 
-  function callbackName(data) {
-    alert(data);
-  }
-    
-    
+    function send_pinboard_url() {
+      $.ajax({
+      type: 'GET',
+      dataType: 'jsonp',
+      jsonp: 'jsonp',
+      url:'https://api.pinboard.in/v1/posts/add',
+      data: {"url": ref, "description": "From pushapage" },
+      statusCode: {
+          200: function() {
+            alert("Page sent");
+          }
+        }
+      })
+    }
     
   var opts = {
     lines: 10, // The number of lines to draw
@@ -100,10 +122,10 @@ ref = getURLParameter("l");
       </div>
     <div id="bookmark_footer">
       <% if @user.instapaper_user %>
-      <div class="small_text send_to_button" id="instapaper">Send to Instapaper</div>
+        <div class="small_text send_to_button" id="instapaper">Send to Instapaper</div>
       <% end %>
       <% if @user.pinboard_user %>
-      <div class="small_text send_to_button" id="pinboard">Send to Pinboard</div>
+        <div class="small_text send_to_button" id="pinboard">Send to Pinboard</div>
       <% end %>
     </div>
   </div>

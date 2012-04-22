@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-SavedSite::Application.load_tasks
+Pushapage::Application.load_tasks
