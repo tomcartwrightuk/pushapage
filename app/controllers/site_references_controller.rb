@@ -1,5 +1,6 @@
 class SiteReferencesController < ApplicationController
  before_filter :authenticate_user!
+ require 'open-uri'
 
   # GET /site_references
   # GET /site_references.xml
@@ -62,10 +63,10 @@ class SiteReferencesController < ApplicationController
     end
     respond_to do |format|
       if @site_reference.save
-        format.html { redirect_to(@site_reference, :notice => 'Site reference was successfully created.') }
+        format.html { redirect_to root_path, :flash => { :success => "Page successfully pushed" }}
         format.json  { render :json => @site_reference, :status => :created, :location => @site_reference }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :flash => { :error => "There was an error. Check the URL and try again." }}
         format.json { render :json => @site_reference.errors, :status => :unprocessable_entity }
       end
     end
@@ -102,6 +103,17 @@ class SiteReferencesController < ApplicationController
   def pullapage_screen
     @site_references = current_user.site_references.find(:all, :order => "id asc", :limit => 10).reverse
     render :layout => 'bookmark_layout'
+  end
+
+  def instapaper_bookmark 
+    @url = params[:ref]
+    file_handle = open("https://www.instapaper.com/api/add",
+      "url" => @url,
+      "username" => "tecartwright@gmail.com",
+      "Referer" => "d3cision") {|f|
+      f.each_line {|line| p line}
+    } 
+    
   end
 
 end

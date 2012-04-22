@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:home]  
+
   def home
     if signed_in?
     @user = current_user
@@ -11,6 +14,14 @@ class PagesController < ApplicationController
   end
 
   def mobile_setup
+    @user = current_user
+  end
+  
+  def mobile_pullapage
+    @user = current_user
+  end
+
+  def mobile_pushapage_history
     @user = current_user
   end
 

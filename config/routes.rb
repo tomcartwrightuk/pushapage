@@ -1,4 +1,4 @@
-SavedSite::Application.routes.draw do
+Pushapage::Application.routes.draw do
 
   resources :supports
 
@@ -9,9 +9,12 @@ SavedSite::Application.routes.draw do
   get "pages/home"
   match "/setup" => "pages#setup"
   match "/mobile_setup" => "pages#mobile_setup"
+  match "/pullapage_setup" => "pages#mobile_pullapage"
+  match "/pushapage_history_setup" => "pages#mobile_pushapage_history"
 
   devise_for :users,  :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
   devise_scope :user do
+    match "users/check_email" => "users#check_email"
     match "/sign_in_again" => "users/sessions#change_user"
     match "/sign_in", :to => "users/sessions#new"
   end
@@ -19,6 +22,7 @@ SavedSite::Application.routes.draw do
   resources :site_references do
     get 'pullapage_screen', :on => :collection
   end
+  match "/site_references/instapaper_bookmark" => "site_references#instapaper_bookmark"
 
   match "/latest" => "site_references#latest", :as => "latest"
   root :to => 'pages#home'

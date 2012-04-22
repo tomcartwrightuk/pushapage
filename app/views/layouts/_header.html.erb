@@ -7,7 +7,7 @@
 
 	  <% if signed_in? %>
             <li><%= link_to "Home", root_path %></li>
-            <li><div id="settings_button" style="margin: 10px 5px;">Settings</div>
+            <li><div id="settings_button" style="margin: 10px 5px;" class="pointer">Settings</div>
                 <ul id="submenu_item">
                 <li id="submenu_item"><%= link_to "Account", edit_user_registration_path %>
                 <% if mobile_device? %>

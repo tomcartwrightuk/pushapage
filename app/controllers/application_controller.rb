@@ -18,11 +18,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #def after_sign_in_path_for(resource)
-        #stored_location_for(resource) || signed_in_root_path(resource)
-      #end
-      #def stored_location_for(resource_or_scope)
-        #scope = Devise::Mapping.find_scope!(resource_or_scope)
-        #session.delete("#{scope}_return_to")
-      #end
 end

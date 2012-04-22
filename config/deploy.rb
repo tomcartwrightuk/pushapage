@@ -6,8 +6,6 @@ set :applicationdir, "~/saved_site"
 set :scm, 'git'
 set :repository,  "pushapage:pushapage.git"
 set :branch, 'master'
-set :git_shallow_clone, 1
-set :scm_verbose, true
 set :user_sudo, true
  
 # roles (servers)
