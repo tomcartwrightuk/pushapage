@@ -23,6 +23,7 @@ Pushapage::Application.routes.draw do
     get 'pullapage_screen', :on => :collection
   end
   match "/site_references/instapaper_bookmark" => "site_references#instapaper_bookmark"
+  match "/addsite" => "site_references#create"
 
   match "/latest" => "site_references#latest", :as => "latest"
   root :to => 'pages#home'

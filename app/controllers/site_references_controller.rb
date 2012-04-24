@@ -64,7 +64,26 @@ class SiteReferencesController < ApplicationController
     respond_to do |format|
       if @site_reference.save
         format.html { redirect_to root_path, :flash => { :success => "Page successfully pushed" }}
-        format.json  { render :json => @site_reference, :status => :created, :location => @site_reference }
+        format.json  { render :json => @site_reference, :status => :created, :location => @site_reference, :callback=> show }
+      else
+        format.html { render :action => "new", :flash => { :error => "There was an error. Check the URL and try again." }}
+        format.json { render :json => @site_reference.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def jsonp
+    @site_reference = current_user.site_references.build(params[:site_reference])
+    @site_reference.reference = params[:reference]
+    if params[:title]
+      @site_reference.title = params[:title]
+    else
+      @site_reference.title = params[:reference]
+    end
+    respond_to do |format|
+      if @site_reference.save
+        format.html { redirect_to root_path, :flash => { :success => "Page successfully pushed" }}
+        format.json  { render :json => @site_reference, :status => :created, :location => @site_reference, :callback=> show }
       else
         format.html { render :action => "new", :flash => { :error => "There was an error. Check the URL and try again." }}
         format.json { render :json => @site_reference.errors, :status => :unprocessable_entity }
