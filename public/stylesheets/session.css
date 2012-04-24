@@ -1,9 +1,7 @@
 body {
-background-color:  #ececec;
-color: #3D3D3D;
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-/*margin: auto 0px auto 0px;*/
-padding: 10px;
+  color: #3D3D3D;
+  background-color:  #ececec;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #container {

@@ -1,5 +1,5 @@
 class SiteReferencesController < ApplicationController
- before_filter :authenticate_user!
+ before_filter :authenticate_user!, :except => [:bookmark]
  require 'open-uri'
 
   # GET /site_references

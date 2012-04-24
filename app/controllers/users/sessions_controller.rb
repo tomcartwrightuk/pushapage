@@ -15,7 +15,7 @@ class Users::SessionsController < Devise::SessionsController
     @location = session[:user_return_to] || 'empty'
     if @location == nil
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }
-    elsif @location[0..8] == '/add_site' || @location == '/site_re'
+    elsif @location[0..8] == '/bookmark' || @location == '/site_re'
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope_bookmark :new }
     else
       respond_with_navigational(resource, stub_options(resource)){ render_with_scope :new }

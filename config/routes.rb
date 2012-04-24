@@ -27,7 +27,7 @@ Pushapage::Application.routes.draw do
 
   match "/latest" => "site_references#latest", :as => "latest"
   root :to => 'pages#home'
-  match "/add_site" => "site_references#bookmark"
+  match "/bookmark" => "site_references#bookmark"
   resources :token_authentications, :only => [:create, :destroy]
 
   match 'contact' => 'contact#new', :as => 'contact', :via => :get

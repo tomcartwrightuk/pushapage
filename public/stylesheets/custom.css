@@ -1,10 +1,4 @@
 body {
-/* 	background-color: #DABD69; */
-/* 	background-color: #94BF73; */
-  /*background: -moz-linear-gradient(#66849e, #eee);
-  background: -webkit-gradient(linear, left top, left bottom, from(#66849e), to(#eee));
-  color: #000;*/
-  /*background-color: #ececec;*/
   background: url('/images/greynoise.png');
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #131313;
@@ -18,10 +12,6 @@ label.error {
   padding-left: 15px;
   margin-top: 15px;
   vertical-align: top; 
-  /*background: url('/images/cross.png'); */
-  /*background-repeat: no-repeat;*/
-  /*padding-right: 17px;*/
-  /*padding-bottom: 7px;*/
 }
 
 #content {

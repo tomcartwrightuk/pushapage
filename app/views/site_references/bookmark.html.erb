@@ -1,119 +1,9 @@
-<html>
-<head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-        
-<script>
-$(function() {
-function getURLParameter(paramName) {
-  var searchString = window.location.search.substring(1),
-      i, val, params = searchString.split("$");
 
-  for (i=0;i<params.length;i++) {
-    val = params[i].split("=");
-    if (val[0] == paramName) {
-      return unescape(val[1]);
-    }
-  }
-  return null;
-}
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+  <script>
 
-page_title = getURLParameter("t");
-ref = getURLParameter("l");
+  </script>
 
-    $.ajax({
-      type: 'POST',
-      url:'/site_references?auth_token=<%= @user.authentication_token %>',
-      data: {"reference": ref, "title": page_title },
-      dataType: 'json',
-      context: document.body,
-      success: function(){
-       var newHTML;
-       newHTML = "<div class='spinner_container'><img src='/images/tick.jpg'></div><span>Page sent!</span><br><p id='info_paragraph'>On any of your devices, just click your 'Pullapage' bookmark</p>";
-       $('#content_wrapper').html(newHTML);
-      },
-      error: function() {
-        var newHTML;
-        newHTML = "<h5>Don't hate me.</h5><p>There was an error of sorts. Please try again soon.</p>";
-        $('#content_wrapper').html(newHTML);
-      },
-    });   
- 
-    $("#instapaper").click(function() {
-      $.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        jsonp: 'jsonp',
-        url:'https://www.instapaper.com/api/add',
-        data: {"url": ref , "username": "<%= current_user.instapaper_user %>", "password": "<%= current_user.instapaper_pass %>", },
-        success: function(data) {
-          var newHTML;
-          if (data['status'] == 201)
-            {
-            newHTML = "Done";
-            $('#instapaper').html(newHTML);
-            }
-          else if (data['status'] == 403)
-            {
-            newHTML = "Invalid username/ password";
-            $('#instapaper').html(newHTML);
-            }
-          else
-            {
-            newHTML = "Service error.";
-            $('#instapaper').html(newHTML);
-            }
-            
-        }
-      })
-    });
-
-    $("#pinboard").click(function() {
-      $.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        jsonp: 'jsonp',
-        url:'https://<%= current_user.pinboard_user %>:<%= current_user.pinboard_pass %>@api.pinboard.in/v1/method',
-        statusCode: {
-          200: function() {
-            send_pinboard_url();
-          }
-        }
-      })
-    });
-
-    function send_pinboard_url() {
-      $.ajax({
-      type: 'GET',
-      dataType: 'jsonp',
-      jsonp: 'jsonp',
-      url:'https://api.pinboard.in/v1/posts/add',
-      data: {"url": ref, "description": "From pushapage" },
-      statusCode: {
-          200: function() {
-            alert("Page sent");
-          }
-        }
-      })
-    }
-    
-  var opts = {
-    lines: 10, // The number of lines to draw
-    length: 5, // The length of each line
-    width: 4, // The line thickness
-    radius: 6, // The radius of the inner circle
-    color: '#000', // #rgb or #rrggbb
-    speed: 1, // Rounds per second
-    trail: 60, // Afterglow percentage
-    shadow: false // Whether to render a shadow
-  };
-  var target = document.getElementById('spinner');
-  var spinner = new Spinner(opts).spin(target);
-
-
-});
-</script>
-</head>
-<body>
   <div id="container">
     <a href="/" target="_blank"><h4>Pushapage</h4></a>
       <div id="content_wrapper">
@@ -129,6 +19,5 @@ ref = getURLParameter("l");
       <% end %>
     </div>
   </div>
-</body>
-</html>
+
 

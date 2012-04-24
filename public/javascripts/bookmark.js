@@ -1,14 +1,9 @@
 $(function() {
-
-
-
-
 	var a=$(location).attr("href");
 	var t=$(this).attr('title');
-	t = encodeURIComponent(t);
-	$(document.body).append("<iframe id=\"myId\" />");
-	$("iframe#myId").attr("src","http://localhost:3000");
-	$("iframe#myId").attr("style","position:fixed;top:20px;left:20px;height:585px;width:920px;border:1px%20solid;z-index:16777271;");
+	$(document.body).append("<iframe id=\"pushapage\" />");
+	$("iframe#pushapage").attr("src","http://localhost:3000/bookmark");
+	$("iframe#pushapage").attr("style","position:fixed;top:20px;left:20px;height:185px;width:320px;border:none;z-index:16777271;");
     $.ajax({
       type: 'GET',
       url:'http://localhost:3000/addsite?auth_token=WNnpGxxmW8jQNpadYtXs',
@@ -26,4 +21,8 @@ $(function() {
         $('#content_wrapper').html(newHTML);
       },
     });   
+
+	function close_iframe() {
+		$('#pushapage').remove();
+	}
 });
