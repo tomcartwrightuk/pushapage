@@ -2,7 +2,6 @@ class SiteReference < ActiveRecord::Base
   belongs_to :user
   require 'uri'
   validates :reference, :presence => true
-  validates :user_id, :presence => true
 
   def self.get_host
     uri = URI.parse(self)

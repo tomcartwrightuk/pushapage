@@ -2,3 +2,6 @@ Rails based web app. Temporarily bookmark a website address so that it can be *p
 
 Uses a javscript bookmarklet to scrape the address and page title.
 
+Next development tasks
+- Improve pushapage history bookmarklet
+

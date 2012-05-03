@@ -1,13 +1,14 @@
 class SiteReferencesController < ApplicationController
  before_filter :authenticate_user!, :except => [:bookmark]
+ before_filter :authenticate_user!
  require 'open-uri'
+ require 'net/http'
 
   # GET /site_references
   # GET /site_references.xml
   def index
     @site_references = current_user.site_references.all
-
-    respond_to do |format|
+      respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @site_references }
     end
@@ -36,7 +37,7 @@ class SiteReferencesController < ApplicationController
   end
 
   def latest
-    latest_url = SiteReference.last.reference
+    latest_url = current_user.site_references.last.reference
     redirect_to latest_url 
   end
 
@@ -54,39 +55,17 @@ class SiteReferencesController < ApplicationController
   # POST /site_references
   # POST /site_references.xml
   def create
-    @site_reference = current_user.site_references.build(params[:site_reference])
+    @site_reference = current_user.site_references.find_or_initialize_by_reference(params[:reference])
     @site_reference.reference = params[:reference]
-    if params[:title]
-      @site_reference.title = params[:title]
-    else
-      @site_reference.title = params[:reference]
-    end
+    @site_reference.updated_at = Time.new
+    params[:title] ? @site_reference.title = params[:title] : @site_reference.title = params[:reference]
     respond_to do |format|
       if @site_reference.save
+        format.json  { render :json =>  @site_reference, :callback => params[:callback] }
         format.html { redirect_to root_path, :flash => { :success => "Page successfully pushed" }}
-        format.json  { render :json => @site_reference, :status => :created, :location => @site_reference, :callback=> show }
       else
-        format.html { render :action => "new", :flash => { :error => "There was an error. Check the URL and try again." }}
         format.json { render :json => @site_reference.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def jsonp
-    @site_reference = current_user.site_references.build(params[:site_reference])
-    @site_reference.reference = params[:reference]
-    if params[:title]
-      @site_reference.title = params[:title]
-    else
-      @site_reference.title = params[:reference]
-    end
-    respond_to do |format|
-      if @site_reference.save
-        format.html { redirect_to root_path, :flash => { :success => "Page successfully pushed" }}
-        format.json  { render :json => @site_reference, :status => :created, :location => @site_reference, :callback=> show }
-      else
         format.html { render :action => "new", :flash => { :error => "There was an error. Check the URL and try again." }}
-        format.json { render :json => @site_reference.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -132,7 +111,17 @@ class SiteReferencesController < ApplicationController
       "Referer" => "d3cision") {|f|
       f.each_line {|line| p line}
     } 
-    
+  end
+
+  def to_instapaper
+    url = 'http://www.instapaper.com/api/add'
+    ref, title = params[:reference], params[:title]
+    uri = URI(url)
+    res = Net::HTTP.post_form(uri, "username" => current_user.instapaper_user, "password" => current_user.instapaper_pass, "url" => ref, "title" => title)
+    @user = current_user
+    respond_to do |format|
+      format.js { render :json => res.body, :callback => params[:callback] }
+    end
   end
 
 end

@@ -24,6 +24,7 @@ Pushapage::Application.routes.draw do
   end
   match "/site_references/instapaper_bookmark" => "site_references#instapaper_bookmark"
   match "/addsite" => "site_references#create"
+  match "/to_instapaper" => "site_references#to_instapaper"
 
   match "/latest" => "site_references#latest", :as => "latest"
   root :to => 'pages#home'

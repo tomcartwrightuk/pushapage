@@ -20,7 +20,7 @@
           <% end %>
         </div>
         <div class="small_text float_right"><%= link_to 'Delete', site_reference, { :controller => :site_references, :action => :destroy, :method => :delete, :confirm => 'Are you sure?' } %></div>
-        <div id="added_time" class="small_text float_right">Added <%= time_ago_in_words(site_reference.created_at) %> ago</div></td>
+        <div id="added_time" class="small_text float_right">Added <%= time_ago_in_words(site_reference.updated_at) %> ago</div></td>
       </tr>
     <% end %>
     </table>

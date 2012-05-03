@@ -26,13 +26,13 @@ describe SiteReferencesController do
     describe "success" do
       
       before(:each) do
-        @ref = { :reference => "example.com" }
+        @ref = { :reference => "http://example.com" }
       end
 
       it "should create a new site reference" do
         lambda do
           post :create, :site_reference => @ref  
-        end.should change(SiteReference, :count)
+        end.should change(SiteReference, :count).by(1)
       end
 
       it "should redirect to the root path" do
