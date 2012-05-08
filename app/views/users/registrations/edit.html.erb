@@ -20,18 +20,12 @@
 </div>
 
 <div id="settings_right_column">
-  <h3>Instapaper and Pinboard Account Settings</h3>
+  <h3>Instapaper Account Settings</h3>
   <div class="overflow"><%= f.label :instapaper_username, "Instapaper username" %><br /> 
   <%= f.text_field :instapaper_user %></div>
 
   <div class="overflow"><%= f.label :instapaper_pass, "Instapaper password" %><br /> 
   <%= f.password_field :instapaper_pass %></div><br />
-
-  <div class="overflow"><%= f.label :pinboard_user, "Pinboard username" %><br /> 
-  <%= f.text_field :pinboard_user %></div>
-
-  <div class="overflow"><%= f.label :pinboard_pass, "Pinboard password" %><br /> 
-  <%= f.password_field :pinboard_pass %></div>
 </div>
 
   <div><%= f.submit "Save settings" %></div>
