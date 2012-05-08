@@ -37,8 +37,10 @@ class SiteReferencesController < ApplicationController
   end
 
   def latest
-    latest_url = current_user.site_references.last.reference
-    redirect_to latest_url 
+    latest_url = current_user.site_references.find(:all, :order => "updated_at asc", :limit => 10).last.reference
+    if latest_url
+      redirect_to latest_url 
+    end
   end
 
   def bookmark
@@ -101,16 +103,6 @@ class SiteReferencesController < ApplicationController
   def pullapage_screen
     @site_references = current_user.site_references.find(:all, :order => "id asc", :limit => 10).reverse
     render :layout => 'bookmark_layout'
-  end
-
-  def instapaper_bookmark 
-    @url = params[:ref]
-    file_handle = open("https://www.instapaper.com/api/add",
-      "url" => @url,
-      "username" => "tecartwright@gmail.com",
-      "Referer" => "d3cision") {|f|
-      f.each_line {|line| p line}
-    } 
   end
 
   def to_instapaper

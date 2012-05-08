@@ -17,6 +17,7 @@ Pushapage::Application.routes.draw do
     match "users/check_email" => "users#check_email"
     match "/sign_in_again" => "users/sessions#change_user"
     match "/sign_in", :to => "users/sessions#new"
+    match '/insta_check' => 'users#insta_check'
   end
 
   resources :site_references do

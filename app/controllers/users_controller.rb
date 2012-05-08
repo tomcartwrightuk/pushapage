@@ -14,4 +14,11 @@ class UsersController < Devise::SessionsController
     end
   end
 
+  def insta_check
+    result = current_user.instapaper_user?
+    respond_to do |format|
+      format.js { render :json => result, :callback => params[:callback] }
+    end
+  end
+
 end

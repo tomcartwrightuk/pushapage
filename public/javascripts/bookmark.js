@@ -8,7 +8,7 @@ $(function() {
 
 
 	$(document.body).append("<div id=\"pushapage\" />");
-	$("#pushapage").attr("style","position:fixed;border:none; z-index: 2147483647; left: 0px; top: 0px; width: 100%; height: 100%; -webkit-transition-property: opacity; -webkit-transition-duration: 0.25s; -webkit-transition-timing-function: linear; -webkit-transition-delay: initial; text-align: center; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; background-color: rgb(0, 0, 0); color: rgb(204, 204, 204); -webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1; letter-spacing: normal; font-variant: normal; font-style: normal; font-size: 24px; padding-top: 112px; opacity: 0.9; ");
+	$("#pushapage").attr("style","position:fixed;border:none; z-index: 2147483647; left: 0px; top: 0px; width: 100%; height: 100%; -webkit-transition-property: opacity; -webkit-transition-duration: 0.25s; -webkit-transition-timing-function: linear; -webkit-transition-delay: initial; text-align: center; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; background-color: rgb(0, 0, 0); color: rgb(204, 204, 204); -webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1; letter-spacing: normal; font-variant: normal; font-style: normal; font-size: 24px; padding-top: 112px; opacity: 0.9;");
 
 	$("#pushapage").append("<div id=\"spinner\" />");
 	$("#spinner").attr("style","-webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.0; letter-spacing: normal; font-variant: normal; font-style: normal;margin-left: auto;margin-right: auto;margin-bottom:20px;");
@@ -17,8 +17,23 @@ $(function() {
 	$("#saving").text("Sending page");
 	$("#pushapage").append("<br />");
 	$("#pushapage").append("<div id=\"instapaper\" />");
-	$("#instapaper").attr("style","-webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.0; letter-spacing: normal; font-variant: normal; font-style: normal;cursor: pointer;cursor: hand;background-color: #181a5a;padding: 3px;width: 120px;display: inline-block;margin-left: auto;margin-right: auto;margin-top:20px;font-size:0.9em;");
-	$("#instapaper").text("Send to instapaper");
+
+      $.ajax({
+        type: 'GET',
+        dataType: 'jsonp',
+        url:'http://localhost:3000/insta_check',
+      	jsonpCallback: 'insta_call',
+        success: function(data, textStatus, jqXHR) {
+	if (data) {
+		$("#instapaper").attr("style","-webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.0; letter-spacing: normal; font-variant: normal; font-style: normal;cursor: pointer;cursor: hand;background-color: #181a5a;padding: 3px;width: 120px;display: inline-block;margin-left: auto;margin-right: auto;margin-top:20px;font-size:0.9em;opacity:1;");
+		$("#instapaper").text("Send to instapaper");
+		}
+		},
+	error: function(jqXHR, textStatus, errorThrown) {
+		}
+      })
+
+
 
 
 
@@ -35,10 +50,9 @@ $(function() {
   var target = document.getElementById('spinner');
   var spinner = new Spinner(opts).spin(target);
 
-
     $.ajax({
       type: 'GET',
-      url:'http://localhost:3000/addsite?auth_token=WNnpGxxmW8jQNpadYtXs',
+      url:'http://localhost:3000/addsite?',
       data: {"reference": a, "title": t},
       dataType: 'jsonp',
       jsonpCallback: 'alertResponse',
@@ -50,7 +64,8 @@ $(function() {
         },
       error: function() {
       	$("#spinner").hide();
-      	$("#saving").html("There was an error");
+	$("#saving").html("<a href='http://pushapage.com/sign_in' target='_blank'>Please sign in</a> - Then try again");
+	setTimeout(hide_iframe, 6000);
       }
  });   
 
