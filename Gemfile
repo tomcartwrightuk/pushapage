@@ -9,6 +9,7 @@ group :development do
   gem 'sqlite3'
 end
 gem 'devise'
+gem 'rails_config'
 gem 'rspec-rails', '2.6.1'
 gem 'factory_girl'
 gem 'factory_girl_rails'
