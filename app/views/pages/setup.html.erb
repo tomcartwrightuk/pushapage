@@ -1,22 +1,23 @@
 <div id="settings">
-         <p>
-        <%= link_to "Click to setup your ipad/tablet <=", { :controller => '/pages', :action => 'mobile_setup' } %> 
-        </p>
-   <div class="bookmarklet_row bottom_border">
-      <div id="settings_left_column" class="setup_column"> 
-        <p>
+  <p>
+    <%= link_to "Click to setup your ipad/tablet <=", { :controller => '/pages', :action => 'mobile_setup' } %> 
+  </p>
+  <div class="bookmarklet_row bottom_border">
+    <div id="settings_left_column" class="setup_column"> 
+      <p>
         Push the page to your devices.<br />
         Send the page to your Instapaper or Pinboard accounts.
-        </p>
-        <a class="bookmarklet" href='javascript:function attach_js_file(){var a=document,b=a.createElement("scr"+"ipt"),c=a.createElement("scr"+"ipt"),d=a.body;try{if(!d)throw 0;b.setAttribute("src","http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js");c.setAttribute("src","http://localhost:3000/javascripts/bookmark.js");d.appendChild(b);d.appendChild(c)}catch(e){alert("There was a problem. Please try again in a few seconds")}}attach_js_file()'>Pushapage</a>
-        <div class="tiny_text inline">
-        ← Drag this to your bookmark bar
-        </div>
-      </div>
-      <div class="setup_column_slim">
-        <img src="/images/pushapage.jpg">
+      </p>
+      <%- bookmarklet_link = "javascript:function attach_js_file(){var a=document,b=a.createElement('scr'+'ipt'),c=a.createElement('scr'+'ipt'),d=a.body;try{if(!d)throw 0;b.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js');c.setAttribute('src',#{Settings.domain}+'/javascripts/bookmark.js');d.appendChild(b);d.appendChild(c)}catch(e){alert('There was a problem. Please try again in a few seconds')}}attach_js_file()" %> 
+      <%= link_to "Pushapage", bookmarklet_link, :class => "bookmarklet" %>
+      <div class="tiny_text inline">
+      ← Drag this to your bookmark bar
       </div>
     </div>
+    <div class="setup_column_slim">
+      <img src="/images/pushapage.jpg">
+    </div>
+  </div>
     <div id="pullapage_bookmarklet_row" class="bottom_border">
       <div id="settings_center_column" class="setup_column">
         <p>Load your most recently pushed page</p>
@@ -29,7 +30,7 @@
     <div class="bookmarklet_row">
       <div id="settings_right_column" class="setup_column left_border">
         <p>
-        Display a popup list of your most recently added pages.
+          Display a popup list of your most recently added pages.
         </p>
         <a href='javascript:(function(){function d(){(window.myBookmarklet=function(){var a=$(location).attr("href");$(document.body).append("<iframe id=\"myId\" />");$("iframe#myId").attr("src","http://localhost:3000/site_references/pullapage_screen");$("iframe#myId").attr("style","position:fixed;top:0px;left:0px;height:280px;width:300px;border:1px%20solid;z-index:16777271;")})()}var a="1.6.2";if(window.jQuery===undefined||window.jQuery.fn.jquery<a){var b=false;var c=document.createElement("script");c.src="http://ajax.googleapis.com/ajax/libs/jquery/"+a+"/jquery.min.js";c.onload=c.onreadystatechange=function(){if(!b&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){b=true;d()}};document.getElementsByTagName("head")[0].appendChild(c)}else{d()}})()' class='bookmarklet'>PushapageHistory</a>
         <div class="tiny_text inline">
@@ -37,12 +38,8 @@
         </div>
       </div>
       <div class="setup_column_slim">
-          <img src="/images/pullapage.jpg"> 
+        <img src="/images/pullapage.jpg"> 
       </div>
-       <br />
-        <br />
-        <br />
-  </div> 
-    <br />
-    </div>
- </div>
+    </div> 
+  </div>
+</div>
