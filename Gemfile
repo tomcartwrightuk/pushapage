@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '= 3.2.13'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -18,12 +18,11 @@ group :development do
 end
 gem 'devise'
 gem 'rails_config'
-gem 'rspec-rails', '2.6.1'
+gem 'rspec-rails'
 gem 'factory_girl'
 gem 'factory_girl_rails'
 gem 'capistrano'
 
 group :test do
-  gem 'rspec-rails', '2.6.1'
   gem 'spork', '0.9.0.rc8'
 end
