@@ -12,10 +12,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-group :development do
-  gem 'sqlite3'
-end
 gem 'devise'
 gem 'rails_config'
 gem 'rspec-rails'
@@ -23,6 +19,17 @@ gem 'factory_girl'
 gem 'factory_girl_rails'
 gem 'capistrano'
 
+group :development do
+  gem 'sqlite3'
+end
+
 group :test do
   gem 'spork', '0.9.0.rc8'
+end
+
+group :development, :test do
+  gem "pry"
+  gem "pry-doc"
+  gem "pry-debugger"
+  gem "pry-stack_explorer"
 end
