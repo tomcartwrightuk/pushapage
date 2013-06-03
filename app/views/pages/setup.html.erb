@@ -8,7 +8,7 @@
         Push the page to your devices.<br />
         Send the page to your Instapaper or Pinboard accounts.
       </p>
-      <%- bookmarklet_link = "javascript:function attach_js_file(){var a=document,b=a.createElement('scr'+'ipt'),c=a.createElement('scr'+'ipt'),d=a.body;try{if(!d)throw 0;b.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js');c.setAttribute('src',#{Settings.domain}+'/javascripts/bookmark.js');d.appendChild(b);d.appendChild(c)}catch(e){alert('There was a problem. Please try again in a few seconds')}}attach_js_file()" %> 
+      <%- bookmarklet_link = "javascript:function attach_js_file(){var a=document,b=a.createElement('scr'+'ipt'),c=a.createElement('scr'+'ipt'),d=a.body;try{if(!d)throw 0;b.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js');c.setAttribute('src',#{Settings.domain}+'/bookmarklets/bookmark.js');d.appendChild(b);d.appendChild(c)}catch(e){alert('There was a problem. Please try again in a few seconds')}}attach_js_file()" %> 
       <%= link_to "Pushapage", bookmarklet_link, :class => "bookmarklet" %>
       <div class="tiny_text inline">
       ← Drag this to your bookmark bar
