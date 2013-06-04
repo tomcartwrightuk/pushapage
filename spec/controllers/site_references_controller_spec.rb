@@ -6,7 +6,7 @@ describe SiteReferencesController do
  describe "POST create" do
         
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       sign_in @user
     end
 
@@ -31,23 +31,23 @@ describe SiteReferencesController do
 
       it "should create a new site reference" do
         lambda do
-          post :create, :site_reference => @ref  
+          post :create, @ref  
         end.should change(SiteReference, :count).by(1)
       end
 
       it "should redirect to the root path" do
-        post :create, :site_reference => @ref  
+        post :create, @ref  
         response.should redirect_to(root_path)
       end
 
       it "should have a flash success message" do
-        post :create, :site_reference => @ref
+        post :create, @ref
         flash[:success].should =~ /Page successfully pushed/i
       end
 
       it "should create a link resource using Ajax" do
         lambda do
-          xhr :post, :create, :site_reference => @ref
+          xhr :post, :create, @ref
         end.should change(SiteReference, :count).by(1)
       end
     end
@@ -72,7 +72,7 @@ describe SiteReferencesController do
  
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      user = Factory.create(:user)
+      user = FactoryGirl.create(:user)
       sign_in user
     end
  

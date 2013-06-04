@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SiteReference do
 
   before(:each) do
-    @user = Factory(:user)
+    @user = FactoryGirl.create(:user)
     @url = { :reference => "www.example.com" }
   end
   
@@ -13,18 +13,14 @@ describe SiteReference do
     end
 
     it "should require a non-blank reference" do
-        @user.site_references.build(@url.merge(:reference => '')).should_not be_valid
-    end
-    
-    it "should require a user" do
-      SiteReference.new(@url).should_not be_valid
+        @user.site_references.new(:reference => '').should_not be_valid
     end
   end
 
   describe "site_ref associations" do
     
     before(:each) do
-      @site_ref = @user.site_references.build(:upload)
+      @site_ref = @user.site_references.build(:reference => 'www.exmaple.com')
     end
 
     it "should have a user" do
