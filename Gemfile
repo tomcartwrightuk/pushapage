@@ -23,10 +23,6 @@ group :development do
   gem 'sqlite3'
 end
 
-group :test do
-  gem 'spork', '0.9.0.rc8'
-end
-
 group :development, :test do
   gem "pry"
   gem "pry-doc"
