@@ -51,7 +51,8 @@ Pushapage::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline
-  config.assets.compile = false
+  #config.assets.compile = false
+  config.assets.precompile += %w(application.css ie.css bookmark.css)
 
   # Generate digests for assets URLs
   config.assets.digest = true

@@ -1,8 +1,8 @@
 /*
 *= require_self
-*= require_tree .
-*= require less.css
 *= require custom.css
+*= require less.css
+*= require styles.css
 */
 
 /* rest of file omitted */
