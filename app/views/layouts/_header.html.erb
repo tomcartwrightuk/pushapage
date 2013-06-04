@@ -1,28 +1,25 @@
-<header>
+<%= link_to root_path do %>
   <h1 class="inline">Pushapage</h1>
-    <ul id="nav" class="blue_coloured_element round_bottom"> 
-          <% if signed_in? == false %>
-             <li><a href="/sign_in">Sign in</a></li>
-          <% end %>
-
-	  <% if signed_in? %>
-            <li><%= link_to "Home", root_path %></li>
-            <li><div id="settings_button" style="margin: 10px 5px;" class="pointer">Settings</div>
-                <ul id="submenu_item">
-                <li id="submenu_item"><%= link_to "Account", edit_user_registration_path %>
-                <% if mobile_device? %>
-                  <li id="submenu_item"><%= link_to "Setup", mobile_setup_path %></li>
-                <% else %>
-                  <li id="submenu_item"><%= link_to "Setup", setup_path %></li>
-                <% end %>
-                </ul>
-            </li>
-	  <% end %>
-          <% if signed_in? %>
-            <li><%= link_to "Sign out", '/sign_in_again' %></li>
-          <% else %>
-          <% end %>
+<%- end %>
+<ul id="nav" class="blue_coloured_element round_bottom"> 
+  <% if signed_in? == false %>
+    <li><a href="/sign_in">Sign in</a></li>
+  <% end %>
+  <% if signed_in? %>
+    <li><%= link_to "Home", root_path %></li>
+    <li><div id="settings_button" style="margin: 10px 5px;" class="pointer">Settings</div>
+      <ul id="submenu_item">
+        <li id="submenu_item"><%= link_to "Account", edit_user_registration_path %>
+        <% if mobile_device? %>
+          <li id="submenu_item"><%= link_to "Setup", mobile_setup_path %></li>
+        <% else %>
+          <li id="submenu_item"><%= link_to "Setup", setup_path %></li>
+        <% end %>
       </ul>
-</header>
-
-
+    </li>
+  <% end %>
+  <% if signed_in? %>
+    <li><%= link_to "Sign out", '/sign_in_again' %></li>
+  <% else %>
+  <% end %>
+</ul>
