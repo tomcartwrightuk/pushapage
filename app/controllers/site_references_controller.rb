@@ -37,9 +37,11 @@ class SiteReferencesController < ApplicationController
   end
 
   def latest
-    latest_url = current_user.site_references.find(:all, :order => "updated_at asc", :limit => 10).last.reference
+    latest_url = current_user.site_references.find(:all, :order => "updated_at asc", :limit => 10).last.reference if current_user.site_references.count > 0
     if latest_url
       redirect_to latest_url 
+    else
+      redirect_to root_path
     end
   end
 
