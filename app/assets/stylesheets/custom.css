@@ -339,7 +339,7 @@ input:-webkit-autofill {
 .container table tr td {
 border:0px;
 padding: 0px;
-border-bottom: 1px solid #aaa;
+border-bottom: 1px dotted #DDD;
 
 }
 

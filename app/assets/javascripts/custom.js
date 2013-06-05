@@ -15,7 +15,7 @@ $(function() {
   var window_height = $(window).height();
   $('.container').css('min-height', 0.8*window_height);
 
-  $('#user_new').validate({
+  $('#new_user').validate({
     rules: {
       "user[email]": {required: true, email: true, remote:"/users/check_email" },
       "user[password]": {
@@ -27,7 +27,12 @@ $(function() {
       }
     }, //end rules
     success: function(label) {
-       label.html("<img src='/images/tick.png'>").addClass("checked");
+       label.html("<img src='/assets/tick.png'>").addClass("checked");
+    },
+    messages: {
+      "user[email]" : {
+        remote: "This address is not available"
+      }
     }
   }); // end validate(),
 });
