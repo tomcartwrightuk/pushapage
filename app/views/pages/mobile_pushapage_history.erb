@@ -4,25 +4,25 @@
       <h3>Install the <em>PushapageHistory</em> bookmarklet.</h3>
       <br />
       </p>
-      <img src="/images/pullapage.jpg" style="width:35%;float:left;margin-bottom:20px;margin-left:10px">
+      <img src="/assets/pullapage.jpg" style="width:35%;float:left;margin-bottom:20px;margin-left:10px">
     </div><br />
   <ol id="mobile_setup_list">
   <li>
   Copy the text in the box below.
   <p style="font-size: 12px;line-height: 1;width:90%;word-wrap:break-word;margin-top:10px;background:#bbc4cd;"</li>
-javascript%3A(function()%7Bfunction%20d()%7B(window.myBookmarklet%3Dfunction()%7Bvar%20a%3D%24(location).attr(%22href%22)%3B%24(document.body).append('%3Ciframe%20id%3D%22myId%22%20%2F%3E')%3B%24(%22iframe%23myId%22).attr(%22src%22%2C%22http%3A%2F%2Flocalhost%3A3000%2Fsite_references%2Fpullapage_screen%22)%3B%24(%22iframe%23myId%22).attr(%22style%22%2C%22position%3Afixed%3Btop%3A0px%3Bleft%3A0px%3Bheight%3A260px%3Bwidth%3A400px%3Bborder%3A1px%2520solid%3Bz-index%3A16777271%3B%22)%7D)()%7Dvar%20a%3D%221.6.2%22%3Bif(window.jQuery%3D%3D%3Dundefined%7C%7Cwindow.jQuery.fn.jquery%3Ca)%7Bvar%20b%3Dfalse%3Bvar%20c%3Ddocument.createElement(%22script%22)%3Bc.src%3D%22http%3A%2F%2Fajax.googleapis.com%2Fajax%2Flibs%2Fjquery%2F%22%2Ba%2B%22%2Fjquery.min.js%22%3Bc.onload%3Dc.onreadystatechange%3Dfunction()%7Bif(!b%26%26(!this.readyState%7C%7Cthis.readyState%3D%3D%22loaded%22%7C%7Cthis.readyState%3D%3D%22complete%22))%7Bb%3Dtrue%3Bd()%7D%7D%3Bdocument.getElementsByTagName(%22head%22)%5B0%5D.appendChild(c)%7Delse%7Bd()%7D%7D)()
+<%= "javascript:(function(){function d(){(window.myBookmarklet=function(){var a=$(location).attr('href');$(document.body).append('<iframe id=\"myId\" />');$('iframe#myId').attr('src','#{Settings.domain}/site_references/pullapage_screen');$('iframe#myId').attr('style','position:fixed;top:0px;left:0px;height:280px;width:300px;border:1px%20solid;z-index:16777271;')})()}var a='1.6.2';if(window.jQuery===undefined||window.jQuery.fn.jquery<a){var b=false;var c=document.createElement('script');c.src='#{Settings.domain}/bookmarklets/jquery.min.js';c.onload=c.onreadystatechange=function(){if(!b&&(!this.readyState||this.readyState=='loaded'||this.readyState=='complete')){b=true;d()}};document.getElementsByTagName('head')[0].appendChild(c)}else{d()}})()" %>
   </p>
   <li>
   Bookmark this page. It's best to pop it in the bookmarks bar for easy access.<br />
-  <img src="/images/bookmark_bar.png">
+  <img src="/assets/bookmark_bar.png">
   </li>
   <li>
   Click the bookmark icon and edit the bookmark you have just added. 
   </li>
   <li>
   Delete the URL and <em>paste</em> the copied code in it's place.<br />
-  <img src="/images/delete_url_ipad.png">
-  <img src="/images/paste_url_ipad.png">
+  <img src="/assets/delete_url_ipad.png">
+  <img src="/assets/paste_url_ipad.png">
   </li>
   <li>
   That's it!

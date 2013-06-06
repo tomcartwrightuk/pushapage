@@ -5,32 +5,34 @@
       Installing bookmarklets on iOS devices is a faff! (thanks Apple). But you can follow these simple steps and install the <em>pushapage</em> bookmarklet. It will take you about a minute. Alternatively you can install the bookmarklet on your computer and then synchronise your bookmarks in iTunes.
       <br />
       <br />
-      You can install the <em>Pullapage</em> bookmarklet <%= link_to "here.", "/pullapage_setup" %><br />
-      And you can install the <em>Pullapage history</em> bookmarklet <%= link_to "here.", "pushapage_history_setup" %>
       </p>
-      <img src="/images/pushapage_box.png" style="width:35%;float:left;margin-bottom:20px;margin-left:10px">
+      <img src="/assets/pushapage_box.png" style="width:35%;float:left;margin-bottom:20px;margin-left:10px">
     </div><br />
   <ol id="mobile_setup_list">
   <li>
   Copy the text in the box below.
   <p style="font-size: 12px;line-height: 1;width:90%;word-wrap:break-word;margin-top:10px;background:#bbc4cd;"</li>
-  javascript:function attach_js_file(){var a=document,b=a.createElement("scr"+"ipt"),c=a.createElement("scr"+"ipt"),d=a.body;try{if(!d)throw 0;b.setAttribute("src","http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js");c.setAttribute("src","http://localhost:3000/bookmarklets/bookmark.js");d.appendChild(b);d.appendChild(c)}catch(e){alert("There was a problem. Please try again in a few seconds")}}attach_js_file()
+    <%= "javascript:function attach_js_file(){var a=document,b=a.createElement('scr'+'ipt'),c=a.createElement('scr'+'ipt'),d=a.body;try{if(!d)throw 0;b.setAttribute('src','#{Settings.domain}/bookmarklets/jquery.min.js');c.setAttribute('src','#{Settings.domain}/bookmarklets/#{Rails.env}_loader.js');d.appendChild(b);d.appendChild(c)}catch(e){alert('There was a problem. Please try again in a few seconds')}}attach_js_file()" %>
   </p>
   <li>
   Bookmark this page. It's best to pop it in the bookmarks bar for easy access.<br />
-  <img src="/images/bookmark_bar.png">
+  <img src="/assets/bookmark_bar.png">
   </li>
   <li>
   Click the bookmark icon and edit the bookmark you have just added. 
   </li>
   <li>
   Delete the URL and <em>paste</em> the copied code in it's place.<br />
-  <img src="/images/delete_url_ipad.png">
-  <img src="/images/paste_url_ipad.png">
+  <img src="/assets/delete_url_ipad.png">
+  <img src="/assets/paste_url_ipad.png">
   </li>
   <li>
   That's it!
   </li>
   </ol>
+  <p>
+    You can install the <em>Pullapage</em> bookmarklet <%= link_to "here.", "/pullapage_setup" %><br />
+    And you can install the <em>Pullapage history</em> bookmarklet <%= link_to "here.", "pushapage_history_setup" %>
+  </p>
 </div> 
 
