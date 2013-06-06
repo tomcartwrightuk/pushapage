@@ -1,11 +1,5 @@
 Pushapage::Application.routes.draw do
 
-  resources :supports
-
-  resources :bug_reports
-
-  resources :options
-
   get "pages/home"
   match "/setup" => "pages#setup"
   match "/mobile_setup" => "pages#mobile_setup"
