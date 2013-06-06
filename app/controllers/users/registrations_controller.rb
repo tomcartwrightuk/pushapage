@@ -22,21 +22,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-
-    # If the user has filled in any of the password fields, we'll update their password
-    any_passwords = %w(password password_confirmation current_password).any? do |field|
-      params[resource_name][field].present?
-    end
-    update_method = any_passwords ? :update_with_password : :update_without_password
-
-    if resource.send(update_method, params[resource_name])
-      set_flash_message :notice, :updated if is_navigational_format?
-      sign_in resource_name, resource, :bypass => true
-      respond_with resource, :location => after_update_path_for(resource)
+    @user = User.find(current_user.id)
+    successfully_updated = if needs_password?(@user, params)
+      @user.updating_password = true
+      @user.update_with_password(params[:user])
     else
-      clean_up_passwords(resource)
-      respond_with_navigational(resource){ render 'edit' }
+      params[:user].delete(:current_password)
+      @user.updating_password = false
+      @user.update_without_password(params[:user])
+    end
+
+    if successfully_updated
+      set_flash_message :notice, :updated
+      sign_in @user, :bypass => true
+      redirect_to after_update_path_for(@user)
+    else
+      render "edit"
     end
   end
+
+  private
+
+  def needs_password?(user, params)
+    user.email != params[:user][:email] ||
+      !params[:user][:password].blank?
+  end
+  
 end
