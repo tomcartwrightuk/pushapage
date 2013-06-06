@@ -1,5 +1,4 @@
 body {
-  background: url('/images/greynoise.png');
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: #131313;
 }
@@ -25,7 +24,7 @@ p {
 	font-size: 16px;
 }
 a {
-  color: #103842;
+  color: #075568;
   text-decoration: none;
 }
 
@@ -123,7 +122,7 @@ ul.a { list-style-type: disc; }
 
 .container table tr td {
   border:0px;
-  padding: 0px;
+  padding: 5px 0;
   border-bottom: 1px dotted #DDD;
 }
 
@@ -137,6 +136,12 @@ ul.a { list-style-type: disc; }
   width: 100%;
 }
 
+.ref_footer {
+  font-size: 12px;
+  text-align: right;
+  padding: 0 3px;
+}
+
 #introduction {
   margin-left: auto;
   margin-right: auto;
@@ -147,12 +152,11 @@ ul.a { list-style-type: disc; }
   width: 400px;
   margin-left: 60px;
   float: left;
-  height: 120px;
 }
 
 /*settings page*/
 
-#settings {
+.form_wrapper {
   width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -199,12 +203,16 @@ ul.a { list-style-type: disc; }
 #mobile_setup_header {
   width: 80%;
   margin: 30px auto 20px auto;
-  overflow: auto;
 }
 
 #mobile_setup_intro {
   width: 60%;
   float: left;
+}
+
+#mobile_setup_header img {
+  width: 35%;
+  margin-left: 15px;
 }
 
 #mobile_setup_list {
@@ -216,17 +224,10 @@ ul.a { list-style-type: disc; }
 }
 
 #mobile_setup_list li img {
-  margin: 10px 10px 0px 10px;
   width: 250px;
 }
   
 /* Sign up page inc. forms */
-
-.signin_form {
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-}
 
 #sign_in {
   background-color: #fff;
@@ -251,10 +252,6 @@ input[type="submit"], input[type="button"], .big_button {
   -webkit-border-radius: 14px;
   text-align: center;
   border-image: initial;
-}
-
-.form_field {
-  height: 70px;
 }
 
 #signupform { 
@@ -282,15 +279,18 @@ input[type="submit"], input[type="button"], .big_button {
   display: none;
 }
 
-#session_email, #session_password, #session_password_clear, #user_name, #user_email, #user_password, #user_password_clear, #user_password_confirmation, #user_password_confirmation_clear, #user_sign_up_code, #search_box, #user_current_password {
+.form_field {
+  /*height: 80px;*/
+}
+
+.form_field input {
   color: #545454;
   cursor: pointer;
-  font-family: Arial,'Helvetica Neue',Helvetica,sans-serif;
-  left: 0;
   padding: 8px 10px;
-  top: 0;
-  width: 176px;
-  z-index: 2;
+  font-size: 22px;
+  margin: 6px 10px 6px 0px;
+  width: 276px;
+  border: 1px solid #414141;
 }
 
 #session_email, #session_password, #session_password_clear {
@@ -310,16 +310,6 @@ input[type="submit"], input[type="button"], .big_button {
 .input_wrapper_signin {
   height: 43px;
   width: 150px;
-}
-
-#user_name, #user_email, #user_password, #user_password_clear, #user_password_confirmation, #user_password_confirmation_clear, #user_sign_up_code, #search_box, #user_pinboard_user, #user_pinboard_pass, #user_instapaper_user, #user_instapaper_pass, #user_current_password {
-  font-size: 22px;
-  margin: 6px 0 6px 0px;
-  padding: 8px 10px;
-  top: 0;
-  width: 276px;
-  border: 1px solid #414141;
-  float: left;
 }
 
 form .input_wrapper {
@@ -403,6 +393,10 @@ footer nav {
 }
 
 /* errors messages  */
+
+label.error{
+  color: #D60101;
+}
 
 #flash_wrapper {
   text-align: center;

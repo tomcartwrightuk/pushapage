@@ -1,4 +1,4 @@
-<div id="settings">
+<div id="settings" class="form_wrapper">
   <p>
     <%= link_to "Click to setup your ipad/tablet <=", { :controller => '/pages', :action => 'mobile_setup' } %> 
   </p>
@@ -14,11 +14,11 @@
       ← Drag this to your bookmark bar
       </div>
     </div>
-    <div class="setup_column_slim">
+    <div class="setup_column_slim setup_column">
       <%= image_tag("/assets/pushapage_box.png") %>
     </div>
   </div>
-    <div id="pullapage_bookmarklet_row" class="bottom_border">
+    <div id="pullapage_bookmarklet_row" class="bottom_border bookmarklet_row">
       <div id="settings_center_column" class="setup_column">
         <p>Load your most recently pushed page</p>
         <%- latest_link = Settings.domain+'/latest' %>
@@ -39,7 +39,7 @@
         ← Drag this to your bookmark bar
         </div>
       </div>
-      <div class="setup_column_slim">
+      <div class="setup_column_slim setup_column">
         <%= image_tag("/assets/pullapage.jpg") %>
       </div>
     </div> 

@@ -1,20 +1,18 @@
 <% if user_signed_in? %>
-<%= render 'site_references/index' %>
-
+  <%= render 'site_references/index' %>
 <% else %>
   <%= render 'shared/sign_in_form' %>
-<div id="introduction">
-  <p>Pushapage is a helpful little service that lets you temporarily save a website address and retrieve it later on another device. 
-  </p>
-  <div id="feature_list">
-    <ul class="a">
-      <li>Click a bookmark to send a page</li>
-      <li>Receive the page with another bookmark click</li>
-      <li>Send the page to your instapaper account</li>
-    </ul>
+  <div id="introduction">
+    <p>Pushapage is a helpful little service that lets you temporarily save a website address and retrieve it later on another device.</p>
+    <div id="feature_list">
+      <ul class="a">
+        <li>Click a bookmark to send a page</li>
+        <li>Receive the page with another bookmark click</li>
+        <li>Send the page to your instapaper account</li>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="centred_content">
-  <%= link_to "Sign up", '/users/sign_up', { :class => "big_button inline" } %>
-</div>
+  <div class="centred_content">
+    <%= link_to "Sign up", '/users/sign_up', { :class => "big_button inline" } %>
+  </div>
 <% end %>

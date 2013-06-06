@@ -1,33 +1,14 @@
-<script>
-$(function() {
-
-	$('#user_new').validate({
-	rules: {
-		user_password: {
-			required:true,
-			rangelength:[6,16]
-		},
-		user_password_confirmation: {
-			equalTo: '#user_password'
-		}
-	}, //end rules
-	}); // end validate(),
-
-
-});
-</script>
-<div class="signin_form">
+<div class="form_wrapper">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
-    <div class="form_field"><%= f.label :email %><br />
-    <%= f.email_field :email %></div>
-    <div id="status">
-    </div>
+    <div class="form_field"><%= f.label :email %>
+      <%= f.email_field :email %></div>
+    <div id="status"></div>
     <br>
     <div class="form_field"><%= f.label :password %><br />
-    <%= f.password_field :password %></div>
+      <%= f.password_field :password %></div>
     <div id="status"></div>
-   <br> 
+     <br> 
 
     <div class="form_field"><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %></div>

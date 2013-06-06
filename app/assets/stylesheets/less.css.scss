@@ -29,38 +29,38 @@ a img {border: 0;}
 
 
 /*  Typography presets
-  ------------------  */
+------------------  */
 
 .gigantic {
-  font-size: 110px;
-  line-height: 120px;
-  letter-spacing: -2px;
+font-size: 110px;
+line-height: 120px;
+letter-spacing: -2px;
 }
 
 .huge, h1 {
-  font-size: 52px;
-  line-height: 72px;
-  letter-spacing: -1px;
+font-size: 52px;
+line-height: 72px;
+letter-spacing: -1px;
 }
 
 .large, h2 {
-  font-size: 42px;
-  line-height: 48px;
+font-size: 42px;
+line-height: 48px;
 }
 
 .bigger, h3 {
-  font-size: 26px;
-  line-height: 36px;
+font-size: 26px;
+line-height: 36px;
 }
 
 .big, h4 {
-  font-size: 20px;
-  line-height: 30px;
+font-size: 20px;
+line-height: 30px;
 }
 
 .small, small {
-  font-size: 13px;
-  line-height: 18px;
+font-size: 13px;
+line-height: 18px;
 }
 
 /* Selection colours (easy to forget) */
@@ -74,59 +74,72 @@ body {-webkit-tap-highlight-color: rgb(255,255,158);}
 
 
 /*    Default Layout: 992px. 
-    Gutters: 24px.
-    Outer margins: 48px.
-    Leftover space for scrollbars @1024px: 32px.
+  Gutters: 24px.
+  Outer margins: 48px.
+  Leftover space for scrollbars @1024px: 32px.
 -------------------------------------------------------------------------------
 cols    1     2      3      4      5      6      7      8      9      10
 px      68    160    252    344    436    528    620    712    804    896    */
 
 body {
-  width: 992px;
-  margin: auto;
-          /*padding: 0px 48px 84px;*/
-  background: rgb(232,232,232);
-  color: rgb(60,60,60);
-  -webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+width: 992px;
+margin: auto;
+        /*padding: 0px 48px 84px;*/
+background: rgb(232,232,232);
+color: rgb(60,60,60);
+-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
 }
 
 
 
 
 /*    Tablet Layout: 768px.
-    Gutters: 24px.
-    Outer margins: 28px.
-    Inherits styles from: Default Layout.
+  Gutters: 24px.
+  Outer margins: 28px.
+  Inherits styles from: Default Layout.
 -----------------------------------------------------------------
 cols    1     2      3      4      5      6      7      8
 px      68    160    252    344    436    528    620    712    */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+body {
+  width: 712px;
+  padding: 0px 28px 60px;
+}
+#site_reference_list {
+  width: 100%;
+}
+#introduction p {
+  margin-bottom: 20px !important;
+}
+#introduction > * {
+  margin: 0 0 0 5% !important;
+  ul {
+    margin: 5%;
+  }
+}
   
-  body {
-    width: 712px;
-    padding: 0px 28px 60px;
-  }
-  #site_reference_list {
-    width: 100%;
-  }
 }
 
 
 
 /*    Mobile Layout: 320px.
-    Gutters: 24px.
-    Outer margins: 34px.
-    Inherits styles from: Default Layout.
+  Gutters: 24px.
+  Outer margins: 34px.
+  Inherits styles from: Default Layout.
 ---------------------------------------------
 cols    1     2      3
 px      68    160    252    */
 
 @media only screen and (max-width: 767px) {
-  
+
   body {
-    width: 252px;
-    padding: 48px 34px 60px;
+    width: 90%;
+    padding: 35px 0;
+  }
+  .container {
+    margin-top: 10px !important;
   }
   #site_reference_list {
     width: 100%;
@@ -135,6 +148,49 @@ px      68    160    252    */
     position: absolute;
     top: 0;
     right: 0
+  }
+  #introduction > * {
+    margin: 0 0 0 5% !important;
+    width: 90% !important;
+    float: none !important;
+  }
+  #feature_list {
+    padding-left: 5%;
+    padding-top: 10px;
+  }
+  .form_wrapper {
+    width: 90%;
+  }
+  .centred_content {
+    margin-top: 70px;
+  }
+  .form_field {
+    input {
+      width: 90% !important;
+    }
+  }
+  #mobile_setup_header {
+    p { width: 100% !important; float: none; }
+    img { width: 80% !important; float: none; margin-top: 15px; }
+  }
+  #mobile_setup_list {
+    width: 90%;
+    img {
+      width: 200px !important;
+    }
+  }
+  .bookmarklet_row {
+    width: 90%;
+    height: auto;
+    margin: 10px;
+    img { width: 200px !important; }
+    .setup_column {
+      width: 100%;
+      float: none;
+    }
+  }
+  .bookmarklet_row {
+    width: 100% !important;
   }
 }
 
@@ -149,13 +205,4 @@ cols    1     2      3      4      5
 px      68    160    252    344    436    */
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-  
-  body {
-    width: 436px;
-    padding: 36px 22px 48px;
-  }
-  #site_reference_list {
-    width: 100%;
-  }
-  
 }
