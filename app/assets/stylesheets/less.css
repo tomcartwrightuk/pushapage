@@ -131,7 +131,11 @@ px      68    160    252    */
   #site_reference_list {
     width: 100%;
   }
-  
+  #nav {
+    position: absolute;
+    top: 0;
+    right: 0
+  }
 }
 
 
