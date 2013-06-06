@@ -571,30 +571,25 @@ display: none;
 }
 
 #session_email, #session_password, #session_password_clear {
-    font-size: 13px;
-    margin-top: -20px;
-    margin-right: 5px;
-    padding: 8px 10px;
-    top: 0;
-    width: 120px;
-		vertical-align: middle;
+  font-size: 13px;
+  margin-top: -20px;
+  margin-right: 5px;
+  padding: 8px 10px;
+  top: 0;
+  width: 120px;
+  vertical-align: middle;
 }
 
 #search_box {
 	margin: 12px 0 10px 9px !important;
-	
 }
 
 .input_wrapper_signin {
-  /*background: url("/images/input_scale.png") no-repeat scroll 0 11px transparent;*/
-  /*border-width: 0;*/
-    height: 43px;
-/*     position: relative; */
-		
-    width: 150px;
+  height: 43px;
+  width: 150px;
 }
 
-#user_name, #user_email, #user_password, #user_password_clear, #user_password_confirmation, #user_password_confirmation_clear, #user_sign_up_code, #search_box, #user_pinboard_user, #user_pinboard_pass, #user_instapaper_user, #user_instapaper_pass {
+#user_name, #user_email, #user_password, #user_password_clear, #user_password_confirmation, #user_password_confirmation_clear, #user_sign_up_code, #search_box, #user_pinboard_user, #user_pinboard_pass, #user_instapaper_user, #user_instapaper_pass, #user_current_password {
     font-size: 22px;
     margin: 6px 0 6px 0px;
     padding: 8px 10px;
@@ -605,23 +600,19 @@ display: none;
 }
 
 form .input_wrapper {
-  /*background: url("/images/input.png") no-repeat scroll 0 11px transparent;*/
-  /*border-width: 0;*/
-/*     float: left; */
-    height: 64px;
-/*     margin: 0 0 0 -13px; */
-    position: relative;
-    width: 219px;
+  height: 64px;
+  position: relative;
+  width: 219px;
 }
 
 
 .bigbutton input {
 	background: url("/images/button_submit_grey.gif") no-repeat scroll right 0 padding-box #8BAD68;
 	font-size: 17px;
-    font-weight: bold;
-		width: 197px;
-    height: 42px;
-		margin: 12px 0px 0px 10px;
+  font-weight: bold;
+  width: 197px;
+  height: 42px;
+  margin: 12px 0px 0px 10px;
 }
 
 .short_button input {
@@ -632,13 +623,12 @@ form .input_wrapper {
 }
 
 .signinbutton input {
-    background: url("/images/button_submit_scale_grey.gif") no-repeat scroll right 0 padding-box #8BAD68;
-    font-size: 13px;
-		width: 100px;
-    height: 28px;
-    opacity: 0.9;
-/*     padding: 1px 45px 0 15px; */
-		margin: -3px 0px 0px 0px;
+  background: url("/images/button_submit_scale_grey.gif") no-repeat scroll right 0 padding-box #8BAD68;
+  font-size: 13px;
+  width: 100px;
+  height: 28px;
+  opacity: 0.9;
+  margin: -3px 0px 0px 0px;
 }
 
 
@@ -720,22 +710,19 @@ footer nav {
 
 
 #error_explanation {
-  width: 400px;
-         /*border: 2px solid red;*/
   padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   background-color: #f0f0f0;
 }
 
 #error_explanation h2 {
   text-align: left;
-  font-weight: bold;
   padding: 5px;
   font-size: 15px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
+  margin: 0px;
+  line-height: 17px;
+  color: #D60101;
+  border-bottom: 1px dotted #BBB;
 }
 
 #error_explanation p {
@@ -746,7 +733,8 @@ footer nav {
 
 #error_explanation ul li {
   font-size: 12px;
-  list-style: square;
+  list-style: none;
+  padding: 5px;
 }
 
 /* User show page */
@@ -958,4 +946,8 @@ a.bookmarket, a.bookmarklet:hover, a.bookmarklet:active, a.bookmarklet:visited {
 
 .pullapagehistory {
   font-size: 13px;
+}
+
+#new_password {
+  width: 60%;
 }
