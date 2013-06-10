@@ -73,7 +73,7 @@ $(function() {
     $.ajax({
       type: 'GET',
       dataType: 'jsonp',
-      url:'http://localhost:3000/to_instapaper',
+      url:domain+'/to_instapaper',
       data: {"reference": a, "title": t},
       jsonpCallback: 'insta_call',
       success: function(data, textStatus, jqXHR) {
