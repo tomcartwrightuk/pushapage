@@ -1,2 +1,2 @@
 var domain = "http://pushapage.com"
-$.getScript("http://localhost:3000/bookmarklets/bookmark.js");
+$.getScript("http://pushapage.com:/bookmarklets/bookmark.js");

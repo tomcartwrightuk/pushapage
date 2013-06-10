@@ -18,85 +18,85 @@ $(function() {
     $("#saving").text("Sending page");
     $("#pushapage").append("<br />");
     $("#pushapage").append("<div id=\"instapaper\" />");
+  };
 
+  $.ajax({
+    type: 'GET',
+    dataType: 'jsonp',
+    url:domain+'/insta_check',
+    jsonpCallback: 'insta_call',
+    success: function(data, textStatus, jqXHR) {
+      if (data) {
+        $("#instapaper").attr("style","-webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.0; letter-spacing: normal; font-variant: normal; font-style: normal;cursor: pointer;cursor: hand;background-color: #181a5a;padding: 3px;width: 120px;display: inline-block;margin-left: auto;margin-right: auto;margin-top:20px;font-size:0.9em;opacity:1;");
+        $("#instapaper").text("Send to instapaper");
+      }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+    }
+  })
+
+  var opts = {
+    lines: 10, // The number of lines to draw
+    length: 5, // The length of each line
+    width: 4, // The line thickness
+    radius: 6, // The radius of the inner circle
+    color: '#FFF', // #rgb or #rrggbb
+    speed: 1, // Rounds per second
+    trail: 60, // Afterglow percentage
+    shadow: false // Whether to render a shadow
+  };
+  var target = document.getElementById('spinner');
+  var spinner = new Spinner(opts).spin(target);
+
+  $.ajax({
+    type: 'GET',
+    url:domain+'/addsite?',
+    data: {"reference": a, "title": t},
+    dataType: 'jsonp',
+    jsonpCallback: 'alertResponse',
+    crossDomain: true,
+    success: function(data) {
+      $("#spinner").hide();
+      $("#saving").html("Saved!");
+      setTimeout(hide_iframe, 5000);
+    },
+    error: function() {
+      $("#spinner").hide();
+      $("#saving").html("<a href='http://pushapage.com/sign_in' target='_blank'>Please sign in</a> - Then try again");
+      setTimeout(hide_iframe, 6000);
+    }
+  });
+
+  $("#instapaper").click(function() {
+    newHTML = "Sending..";
+    $('#instapaper').html(newHTML);
     $.ajax({
       type: 'GET',
       dataType: 'jsonp',
-      url:domain+'/insta_check',
+      url:'http://localhost:3000/to_instapaper',
+      data: {"reference": a, "title": t},
       jsonpCallback: 'insta_call',
       success: function(data, textStatus, jqXHR) {
-        if (data) {
-          $("#instapaper").attr("style","-webkit-text-size-adjust: none; font-family: Helvetica, Arial, sans-serif; font-weight: bold; line-height: 1.0; letter-spacing: normal; font-variant: normal; font-style: normal;cursor: pointer;cursor: hand;background-color: #181a5a;padding: 3px;width: 120px;display: inline-block;margin-left: auto;margin-right: auto;margin-top:20px;font-size:0.9em;opacity:1;");
-          $("#instapaper").text("Send to instapaper");
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-      }
-    })
-
-    var opts = {
-      lines: 10, // The number of lines to draw
-      length: 5, // The length of each line
-      width: 4, // The line thickness
-      radius: 6, // The radius of the inner circle
-      color: '#FFF', // #rgb or #rrggbb
-      speed: 1, // Rounds per second
-      trail: 60, // Afterglow percentage
-      shadow: false // Whether to render a shadow
-    };
-    var target = document.getElementById('spinner');
-    var spinner = new Spinner(opts).spin(target);
-
-    $.ajax({
-      type: 'GET',
-      url:domain+'/addsite?',
-      data: {"reference": a, "title": t},
-      dataType: 'jsonp',
-      jsonpCallback: 'alertResponse',
-      crossDomain: true,
-      success: function(data) {
-        $("#spinner").hide();
-        $("#saving").html("Saved!");
-        setTimeout(hide_iframe, 5000);
-      },
-      error: function() {
-        $("#spinner").hide();
-        $("#saving").html("<a href='http://pushapage.com/sign_in' target='_blank'>Please sign in</a> - Then try again");
-        setTimeout(hide_iframe, 6000);
-      }
-    });   
-
-    $("#instapaper").click(function() {
-      newHTML = "Sending..";
-      $('#instapaper').html(newHTML);
-      $.ajax({
-        type: 'GET',
-        dataType: 'jsonp',
-        url:'http://localhost:3000/to_instapaper',
-        data: {"reference": a, "title": t},
-        jsonpCallback: 'insta_call',
-        success: function(data, textStatus, jqXHR) {
-          var newHTML;
-          if (data == 201) {
-            newHTML = "Done";
-            $('#instapaper').html(newHTML);
-          } else if (data == 403) {
-            newHTML = "Invalid username/ password";
-            $('#instapaper').html(newHTML);
-          } else {
-            newHTML = "Service probem.";
-            $('#instapaper').html(newHTML);
-          }
-         },
-        error: function(jqXHR, textStatus, errorThrown) {
-          newHTML = "Service error.";
+        var newHTML;
+        if (data == 201) {
+          newHTML = "Done";
+          $('#instapaper').html(newHTML);
+        } else if (data == 403) {
+          newHTML = "Invalid username/ password";
+          $('#instapaper').html(newHTML);
+        } else {
+          newHTML = "Service probem.";
           $('#instapaper').html(newHTML);
         }
-      })
-    });
+       },
+      error: function(jqXHR, textStatus, errorThrown) {
+        newHTML = "Service error.";
+        $('#instapaper').html(newHTML);
+      }
+    })
+  });
 
-    function hide_iframe() {
-      /*$('#pushapage').hide();*/
-    };
+  function hide_iframe() {
+    $('#pushapage').hide();
   };
 });
